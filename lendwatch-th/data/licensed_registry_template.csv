@@ -1,0 +1,3 @@
+entity_name_th,entity_name_en,brand_names,licence_type,regulator,app_ids,domains,source_url,as_of
+บริษัท ตัวอย่าง สินเชื่อ จำกัด,EXAMPLE ONLY Lender Co. Ltd.,ExampleCash;Example Loan,supervised personal loan,BOT,com.example.lender;1234567890,example-lender.co.th,https://replace-with-official-list-url,2026-11-01
+บริษัท ตัวอย่าง พิโก จำกัด,EXAMPLE ONLY Pico Co. Ltd.,ExamplePico,pico finance,FPO,,example-pico.co.th,https://replace-with-official-list-url,2026-11-01

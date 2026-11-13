@@ -1,0 +1,188 @@
+{
+ "params": {
+  "n_apps": 200000,
+  "u_median": 5.0,
+  "u_sigma": 1.0,
+  "theta_std": 0.1,
+  "theta_shame": 0.02,
+  "share_shame": 0.5,
+  "K": 10,
+  "D": 30.0,
+  "eta": 0.5,
+  "D_fast": 7.0,
+  "exit_days": 180.0,
+  "gate_block": 0.5
+ },
+ "regimes": {
+  "R: complaint-driven": {
+   "mean_all": 415.615905,
+   "median_all": 298.0,
+   "mean_standard": 305.27820543661295,
+   "mean_shaming": 525.4428226514486,
+   "median_standard": 223.0,
+   "median_shaming": 475.0,
+   "share_of_R_total": 1.0,
+   "share_removed_before_exit": 0.59028
+  },
+  "P1: detection, same delay": {
+   "mean_all": 241.103945,
+   "median_all": 142.0,
+   "mean_standard": 241.53240518001763,
+   "mean_shaming": 240.67746827360523,
+   "median_standard": 141.0,
+   "median_shaming": 143.0,
+   "share_of_R_total": 0.5801124117230306,
+   "share_removed_before_exit": 0.837355
+  },
+  "P2: detection + fast track": {
+   "mean_all": 72.10207,
+   "median_all": 43.0,
+   "mean_standard": 72.2559337663379,
+   "mean_shaming": 71.94891850905898,
+   "median_standard": 42.0,
+   "median_shaming": 43.0,
+   "share_of_R_total": 0.17348246092747582,
+   "share_removed_before_exit": 0.95124
+  },
+  "P3: P2 + listing check": {
+   "mean_all": 36.164475,
+   "median_all": 0.0,
+   "mean_standard": 36.21134030951808,
+   "mean_shaming": 36.11782664219012,
+   "median_standard": 0.0,
+   "median_shaming": 0.0,
+   "share_of_R_total": 0.08701417478236306,
+   "share_removed_before_exit": 0.97589
+  }
+ },
+ "R_triggered_before_exit_standard": 0.7220752144976346,
+ "R_triggered_before_exit_shaming": 0.4590948998323889,
+ "size_independence_standard": [
+  {
+   "u_lo": 0.061148978682599386,
+   "u_hi": 2.157509938989759,
+   "mean_victims_before_trigger": 100.0073874413497
+  },
+  {
+   "u_lo": 2.157509938989759,
+   "u_hi": 3.8774113675460136,
+   "mean_victims_before_trigger": 99.61531927650644
+  },
+  {
+   "u_lo": 3.8774113675460136,
+   "u_hi": 6.449721339008514,
+   "mean_victims_before_trigger": 100.0177648416721
+  },
+  {
+   "u_lo": 6.449721339008514,
+   "u_hi": 11.575762057373996,
+   "mean_victims_before_trigger": 100.09116593511932
+  },
+  {
+   "u_lo": 11.575762057373996,
+   "u_hi": 651.0991448733212,
+   "mean_victims_before_trigger": 99.8786801522131
+  }
+ ],
+ "theory_K_over_theta": {
+  "standard": 100.0,
+  "shaming": 500.0
+ },
+ "fragmentation": {
+  "U": 60.0,
+  "rows": [
+   {
+    "M": 1,
+    "R_theta_0.1": 1899.37125,
+    "R_theta_0.1_theory": 1900.0,
+    "R_theta_0.02": 2295.91,
+    "R_theta_0.02_theory": 2300.0,
+    "P2": 539.27525,
+    "P2_theory": 540.0
+   },
+   {
+    "M": 2,
+    "R_theta_0.1": 1999.64675,
+    "R_theta_0.1_theory": 2000.0,
+    "R_theta_0.02": 2800.51225,
+    "R_theta_0.02_theory": 2800.0,
+    "P2": 541.5825,
+    "P2_theory": 540.0
+   },
+   {
+    "M": 4,
+    "R_theta_0.1": 2202.564,
+    "R_theta_0.1_theory": 2200.0,
+    "R_theta_0.02": 3802.0175,
+    "R_theta_0.02_theory": 3800.0,
+    "P2": 539.0195,
+    "P2_theory": 540.0
+   },
+   {
+    "M": 8,
+    "R_theta_0.1": 2599.8205,
+    "R_theta_0.1_theory": 2600.0,
+    "R_theta_0.02": 5793.27275,
+    "R_theta_0.02_theory": 5800.0,
+    "P2": 540.243,
+    "P2_theory": 540.0
+   },
+   {
+    "M": 12,
+    "R_theta_0.1": 3002.541,
+    "R_theta_0.1_theory": 3000.0,
+    "R_theta_0.02": 7790.7265,
+    "R_theta_0.02_theory": 7800.0,
+    "P2": 540.1265,
+    "P2_theory": 540.0
+   },
+   {
+    "M": 16,
+    "R_theta_0.1": 3401.26,
+    "R_theta_0.1_theory": 3400.0,
+    "R_theta_0.02": 9794.32575,
+    "R_theta_0.02_theory": 9800.0,
+    "P2": 539.48325,
+    "P2_theory": 540.0
+   },
+   {
+    "M": 20,
+    "R_theta_0.1": 3800.5915,
+    "R_theta_0.1_theory": 3800.0,
+    "R_theta_0.02": 11782.86275,
+    "R_theta_0.02_theory": 11800.0,
+    "P2": 539.8965,
+    "P2_theory": 540.0
+   }
+  ]
+ },
+ "model3": {
+  "params": {
+   "rho0": 0.12,
+   "b": 0.1,
+   "omega": 1.0,
+   "s0": 0.8,
+   "delta0": 1.0
+  },
+  "examples": {
+   "h=0.2": {
+    "delta=0": 0.3376888838089432,
+    "delta=1": 0.27777433779705446,
+    "delta=5": 0.2348827058583341,
+    "delta=50": 0.21506772588045892
+   },
+   "h=0.5": {
+    "delta=0": 0.4946657156438338,
+    "delta=1": 0.36597766718439545,
+    "delta=5": 0.26729531785999167,
+    "delta=50": 0.2190783820802274
+   },
+   "h=1.0": {
+    "delta=0": 0.7096086290559933,
+    "delta=1": 0.4946657156438338,
+    "delta=5": 0.3182435844326896,
+    "delta=50": 0.22570911624446038
+   }
+  }
+ }
+}

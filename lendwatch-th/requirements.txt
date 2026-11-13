@@ -1,0 +1,11 @@
+# core
+numpy>=1.24
+# recommended
+scikit-learn>=1.2        # supervised calibration, optional near-duplicate text links
+rapidfuzz>=3.0           # fast fuzzy name matching (difflib fallback if missing)
+# live collection only
+requests>=2.28
+beautifulsoup4>=4.11
+google-play-scraper>=1.2
+# tests
+pytest>=7.0
