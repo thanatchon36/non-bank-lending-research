@@ -2,19 +2,24 @@
 
 <p align="center">
 <a href="analysis/requirements.txt"><img src="https://img.shields.io/badge/python-3.10%2B-f5a623?style=flat-square&labelColor=0b1020" alt="Python 3.10+"></a>
+<a href="https://thanatchon36.github.io/non-bank-lending-research/paper/"><img src="https://img.shields.io/badge/paper-read%20online-f5a623?style=flat-square&labelColor=0b1020" alt="Paper: read online"></a>
 <a href="paper/paper.pdf"><img src="https://img.shields.io/badge/paper-PDF-f5a623?style=flat-square&labelColor=0b1020" alt="Paper PDF"></a>
 <a href="paper/paper.tex"><img src="https://img.shields.io/badge/source-LaTeX-f5a623?style=flat-square&labelColor=0b1020" alt="LaTeX source"></a>
 <a href="lendwatch-th/tests"><img src="https://img.shields.io/badge/tests-28-f5a623?style=flat-square&labelColor=0b1020" alt="28 tests"></a>
 <a href="#important-caveats"><img src="https://img.shields.io/badge/data-simulated-b0560f?style=flat-square&labelColor=0b1020" alt="Data: simulated"></a>
+<a href="https://zenodo.org/badge/latestdoi/1456110651"><img src="https://zenodo.org/badge/1456110651.svg" alt="DOI"></a>
+<a href="https://huggingface.co/datasets/thanatchon36/non-bank-lending-research"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20dataset-non--bank--lending-f5a623?style=flat-square&labelColor=0b1020" alt="Hugging Face dataset"></a>
+<a href="https://huggingface.co/thanatchon36/lendwatch-th"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20model-lendwatch--th-f5a623?style=flat-square&labelColor=0b1020" alt="Hugging Face model"></a>
 <a href="#license"><img src="https://img.shields.io/badge/license-not%20chosen-ffe8a3?style=flat-square&labelColor=0b1020" alt="License: not chosen"></a>
 </p>
 
 <p align="center">
+📖 <b><a href="https://thanatchon36.github.io/non-bank-lending-research/paper/">Read the paper online</a></b> ·
 📄 <b><a href="paper/paper.pdf">Download the PDF</a></b> ·
-📝 <b><a href="paper/paper.tex">LaTeX source</a></b> ·
 🔍 <b><a href="lendwatch-th/">lendwatch-th</a></b> ·
 📊 <b><a href="paper/figs/">Figures</a></b> ·
-🧪 <b><a href="analysis/">Analysis code</a></b>
+🤗 <b><a href="https://huggingface.co/datasets/thanatchon36/non-bank-lending-research">Dataset</a></b> ·
+🧮 <b><a href="https://huggingface.co/thanatchon36/lendwatch-th">Model</a></b>
 </p>
 
 **A comparative study of how twelve regimes regulate non-bank consumer lenders, a theory of
@@ -83,7 +88,10 @@ twelve regulatory regimes, places Thailand among them, develops a theory of why 
 enforcement under-detects unlicensed lenders (the reporting-propensity trap), illustrates it with
 simulations, and proposes a three-phase roadmap.
 
+- Read online: <https://thanatchon36.github.io/non-bank-lending-research/paper/> (web version built with pandoc in `docs/paper/`)
 - Figures: [`paper/figs/`](paper/figs/) · Numerical results: [`analysis/data/`](analysis/data/)
+- Dataset on Hugging Face: [`thanatchon36/non-bank-lending-research`](https://huggingface.co/datasets/thanatchon36/non-bank-lending-research), with the simulation summary, pipeline validation and a sample `lendwatch-th` run (all synthetic)
+- Model card on Hugging Face: [`thanatchon36/lendwatch-th`](https://huggingface.co/thanatchon36/lendwatch-th), with the rule-score specification. It holds no trained weights, because the scorer is an uncalibrated rule score
 - Sections: background on Thailand's non-bank credit market, comparative evidence, theory of
   enforcement, quantitative illustrations, roadmap, research agenda; appendices with proofs,
   codebook and simulation details
@@ -123,6 +131,8 @@ lendwatch-th/
   AI system (Claude, Anthropic); the author takes responsibility for the content.
 
 ## Citation
+
+See [`CITATION.cff`](CITATION.cff); each release is archived on Zenodo (DOI badge above).
 
 ```bibtex
 @misc{chongmankhong2026nonbank,

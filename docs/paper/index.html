@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Thanatchon Chongmankhong" />
+  <meta name="dcterms.date" content="2026-11-10" />
+  <title>Regulating Non-Bank Lenders in the Digital Age: A Comparative Study of Twelve Regimes, a Theory of Complaint-Driven Enforcement, and a Roadmap for Thailand</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<div class="topbar">📄 <a href="paper.pdf">Download the PDF</a> · 💻 <a href="https://github.com/thanatchon36/non-bank-lending-research">GitHub</a></div>
+<header id="title-block-header">
+<h1 class="title">Regulating Non-Bank Lenders in the Digital Age: A
+Comparative Study of Twelve Regimes, a Theory of Complaint-Driven
+Enforcement, and a Roadmap for Thailand</h1>
+<p class="author">Thanatchon Chongmankhong</p>
+<p class="date">November 10, 2026</p>
+<div class="abstract">
+<div class="abstract-title">Abstract</div>
+<p>Non-bank lenders now originate a large share of unsecured consumer
+credit in emerging Asia, increasingly through mobile apps, and
+unlicensed digital lenders have followed them. This paper asks how
+authorities regulate non-bank consumer lenders, and what Thailand should
+change. We first code twelve regimes—Thailand, India, Indonesia, the
+Philippines, Malaysia, Singapore, Japan, Kenya, the United Kingdom,
+Australia, the European Union and the United States—on seven design
+dimensions: legal basis, perimeter, lead supervisor, price regulation,
+affordability, digital-channel controls and the response to unlicensed
+lending. Thailand scores lowest on the provisional coding: its rules are
+strict in substance but rest on secondary legislation, are drawn around
+products rather than activities, cap annual rates rather than the total
+cost of short loans, and meet unlicensed lending with criminal law
+alone. We then develop three models. The first shows that
+complaint-driven enforcement grants every illegal app a “free-harm
+allowance” of <span class="math inline">\(K/\theta\)</span>
+victims—<span class="math inline">\(K\)</span> the complaints needed to
+act, <span class="math inline">\(\theta\)</span> the probability a
+victim reports—independent of the app’s size, which rewards
+fragmentation into clone apps and is weakest against the most abusive
+operators. The second shows that the steady-state number of illegal
+operators falls more than proportionally with the speed of takedown. The
+third shows that the welfare-maximising price cap falls as enforcement
+against unlicensed lenders rises, so the two are complements. Monte
+Carlo illustrations and a validated open-source detection pipeline
+quantify these mechanisms under stated, hypothetical parameters. We
+close with a three-phase roadmap ordered by the legal instrument each
+step requires, and a research agenda built on reforms that serve as
+natural experiments.</p>
+</div>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#sec:intro" id="toc-sec:intro">Introduction</a></li>
+<li><a href="#sec:background" id="toc-sec:background">Background:
+Thailand’s non-bank credit market</a>
+<ul>
+<li><a href="#a-layered-market" id="toc-a-layered-market">A layered
+market</a></li>
+<li><a href="#illegal-digital-lending"
+id="toc-illegal-digital-lending">Illegal digital lending</a></li>
+<li><a href="#the-enforcement-default"
+id="toc-the-enforcement-default">The enforcement default</a></li>
+</ul></li>
+<li><a href="#sec:framework" id="toc-sec:framework">Analytical
+framework</a>
+<ul>
+<li><a href="#theory-behind-each-dimension"
+id="toc-theory-behind-each-dimension">Theory behind each
+dimension</a></li>
+<li><a href="#interactions" id="toc-interactions">Interactions</a></li>
+</ul></li>
+<li><a href="#sec:method" id="toc-sec:method">Method</a>
+<ul>
+<li><a href="#approach" id="toc-approach">Approach</a></li>
+<li><a href="#case-selection" id="toc-case-selection">Case
+selection</a></li>
+<li><a href="#sources-coding-and-validity"
+id="toc-sources-coding-and-validity">Sources, coding and
+validity</a></li>
+</ul></li>
+<li><a href="#sec:comparative" id="toc-sec:comparative">Comparative
+evidence</a>
+<ul>
+<li><a href="#asia" id="toc-asia">Asia</a></li>
+<li><a href="#reference-systems-outside-asia"
+id="toc-reference-systems-outside-asia">Reference systems outside
+Asia</a></li>
+<li><a href="#the-coded-comparison" id="toc-the-coded-comparison">The
+coded comparison</a></li>
+<li><a href="#recurring-lessons" id="toc-recurring-lessons">Recurring
+lessons</a></li>
+</ul></li>
+<li><a href="#sec:thailand" id="toc-sec:thailand">Thailand in
+comparative perspective</a>
+<ul>
+<li><a href="#who-regulates-what" id="toc-who-regulates-what">Who
+regulates what</a></li>
+<li><a href="#strengths" id="toc-strengths">Strengths</a></li>
+<li><a href="#five-gaps" id="toc-five-gaps">Five gaps</a></li>
+<li><a href="#should-the-central-bank-remain-in-charge"
+id="toc-should-the-central-bank-remain-in-charge">Should the central
+bank remain in charge?</a></li>
+</ul></li>
+<li><a href="#sec:theory" id="toc-sec:theory">A theory of enforcement
+against unlicensed lenders</a>
+<ul>
+<li><a href="#model-1-the-reporting-propensity-trap"
+id="toc-model-1-the-reporting-propensity-trap">Model 1: the
+reporting-propensity trap</a></li>
+<li><a href="#model-2-free-entry-and-the-ranking-of-levers"
+id="toc-model-2-free-entry-and-the-ranking-of-levers">Model 2: free
+entry and the ranking of levers</a></li>
+<li><a href="#model-3-price-caps-and-enforcement-as-complements"
+id="toc-model-3-price-caps-and-enforcement-as-complements">Model 3:
+price caps and enforcement as complements</a></li>
+</ul></li>
+<li><a href="#sec:quant" id="toc-sec:quant">Quantitative
+illustrations</a>
+<ul>
+<li><a href="#monte-carlo-comparison-of-enforcement-regimes"
+id="toc-monte-carlo-comparison-of-enforcement-regimes">Monte Carlo
+comparison of enforcement regimes</a></li>
+<li><a href="#validating-a-detection-pipeline"
+id="toc-validating-a-detection-pipeline">Validating a detection
+pipeline</a></li>
+</ul></li>
+<li><a href="#sec:roadmap" id="toc-sec:roadmap">A roadmap for
+Thailand</a></li>
+<li><a href="#sec:agenda" id="toc-sec:agenda">Research agenda and
+limitations</a>
+<ul>
+<li><a href="#testable-hypotheses" id="toc-testable-hypotheses">Testable
+hypotheses</a></li>
+<li><a href="#limitations" id="toc-limitations">Limitations</a></li>
+</ul></li>
+<li><a href="#sec:conclusion"
+id="toc-sec:conclusion">Conclusion</a></li>
+<li><a href="#declarations" id="toc-declarations">Declarations</a></li>
+<li><a href="#app:proofs" id="toc-app:proofs">Proofs</a></li>
+<li><a href="#app:codebook" id="toc-app:codebook">Codebook</a></li>
+<li><a href="#app:sim" id="toc-app:sim">Simulation and pipeline
+details</a></li>
+</ul>
+</nav>
+<div class="center">
+<hr />
+<p><br />
+</p>
+<p><strong>Regulating Non-Bank Lenders in the Digital Age:<br />
+A Comparative Study of Twelve Regimes, a Theory of<br />
+Complaint-Driven Enforcement, and a Roadmap for Thailand</strong></p>
+<hr />
+<p><br />
+<span>Thanatchon Chongmankhong</span><br />
+<span>November 10, 2026</span></p>
+</div>
+<p><strong>Keywords:</strong> non-bank financial institutions; consumer
+credit regulation; digital lending; interest-rate caps; enforcement;
+supervisory technology; comparative financial regulation;
+Thailand.<br />
+<strong>JEL codes:</strong> G18, G23, G28, K22, K23, K42.</p>
+<h1 id="sec:intro">Introduction</h1>
+<p>Consumer lending outside the banking system has grown faster than
+almost any other segment of retail finance in emerging Asia. Non-bank
+lenders—personal-loan companies, title lenders, microfinance and “pico”
+lenders, peer-to-peer platforms and, increasingly, app-based lenders—now
+serve borrowers that banks consider too small, too risky or too
+expensive to reach. In Thailand, where household debt has stayed close
+to 90 per cent of GDP in recent years, non-banks are central to
+personal, vehicle-title and hire-purchase lending. The same technologies
+that lowered the cost of legitimate small-ticket lending have also
+lowered the cost of illegal lending: an app can reach millions of phones
+in days, harvest a borrower’s contact list at installation, and collect
+by threatening to shame the borrower in front of everyone they know.</p>
+<p>Regulators responded in the same decade, but along very different
+paths. The United Kingdom capped the total cost of high-cost short-term
+credit in 2015. Japan had already capped both price and total borrowing
+in 2006. India issued detailed digital lending rules in 2022 and a
+public directory of licensed lenders’ apps later. Kenya placed digital
+lenders under its central bank in 2021–22. Indonesia rebuilt its
+financial-sector law in 2023 and runs a standing task force against
+illegal lenders. The European Union’s revised Consumer Credit Directive
+applies from November 2026. Thailand also reformed—most visibly through
+responsible-lending rules in force from 2024—but it did so within an
+architecture dating back, in its legal foundations, to 1972.</p>
+<p>This paper asks two questions. How do authorities around the world
+regulate non-bank consumer lenders, and which design choices recur? And
+what should Thailand change, in which order, and with which legal
+instruments? Answering the second question requires more than a list of
+foreign practices. Countries differ in market structure, legal tradition
+and enforcement capacity, so the paper combines a structured comparison
+with a small body of theory that explains <em>why</em> certain
+combinations of tools work together—and why one of Thailand’s defaults,
+waiting for a victim’s complaint before acting against unlicensed
+lenders, is ill-suited to the harm in question (<a href="#fig:pipeline"
+data-reference-type="ref+label"
+data-reference="fig:pipeline">1</a>).</p>
+<figure id="fig:pipeline" data-latex-placement="htbp">
+<img src="figs/fig1_pipeline.png" />
+<figcaption>Two enforcement pipelines against unlicensed digital
+lenders. In the complaint-driven pipeline that dominates today, every
+action starts from harm already done; in a detection-driven pipeline,
+monitoring and an allow-list of licensed channels start the process, and
+human review protects due process before gatekeepers act.</figcaption>
+</figure>
+<h4 id="contributions.">Contributions.</h4>
+<p>The paper makes four contributions.</p>
+<ol>
+<li><p><strong>A coding scheme and a comparative dataset.</strong> We
+define seven design dimensions—legal basis (D1), perimeter (D2), lead
+supervisor (D3), price regulation (D4), affordability (D5),
+digital-channel controls (D6) and the response to unlicensed lending
+(D7)—and code twelve regimes on each, with a published codebook (<a
+href="#app:codebook" data-reference-type="ref+label"
+data-reference="app:codebook">13</a>).</p></li>
+<li><p><strong>A Thai baseline.</strong> We place Thailand’s fragmented
+architecture—five authorities, a perimeter drawn around products,
+delegated legal instruments—systematically against Asian and global
+peers.</p></li>
+<li><p><strong>A theory of complaint-driven enforcement.</strong> Three
+tractable models yield closed-form results: a size-independent
+“free-harm allowance” under complaint thresholds (<a
+href="#prop:allowance" data-reference-type="ref+label"
+data-reference="prop:allowance">1</a>); a fragmentation incentive (<a
+href="#prop:fragment" data-reference-type="ref+label"
+data-reference="prop:fragment">2</a>); a more-than-proportional effect
+of takedown speed on the stock of illegal operators (<a
+href="#prop:entry" data-reference-type="ref+label"
+data-reference="prop:entry">4</a>); and complementarity between price
+caps and enforcement (<a href="#prop:cap"
+data-reference-type="ref+label"
+data-reference="prop:cap">5</a>).</p></li>
+<li><p><strong>A sequenced roadmap.</strong> We sort reform options by
+the legal instrument each requires—Bank of Thailand (BOT) notification,
+Ministry of Finance (MOF) or Cabinet action, or an Act of Parliament—and
+pair each with the comparative precedent and the model lever it
+uses.</p></li>
+</ol>
+<h4 id="main-findings.">Main findings.</h4>
+<p>On the provisional coding, Thailand records the lowest composite
+score of the twelve regimes. The gap is one of <em>instrument</em>
+rather than ambition: Thai rate ceilings are among the lowest of
+middle-income peers and its conduct rules are detailed, but they rest on
+ministerial notifications issued under a 1972 Revolutionary Council
+announcement, which cannot create administrative fines, investigative
+powers or civil consequences for unlicensed lenders. Theory explains why
+the missing middle layer matters. Under complaint-driven enforcement,
+each illegal app harms on average <span
+class="math inline">\(K/\theta\)</span> borrowers before enforcement is
+even triggered; with plausible reporting propensities this allowance is
+large, it rises precisely where collection is most abusive, and it
+rewards operators for splitting into many small apps. Because faster
+takedown also deters entry, the number of illegal operators falls more
+than proportionally with the speed of detection. And because unlicensed
+supply absorbs borrowers rationed out by price caps, the optimal cap is
+lower where enforcement is stronger—an argument for building enforcement
+capacity <em>before</em> tightening price rules.</p>
+<h4 id="related-literature.">Related literature.</h4>
+<p>The paper connects four literatures. Work on the architecture of
+financial supervision contrasts integrated, sectoral and “twin peaks”
+models <span class="citation"
+data-cites="Taylor1995 Llewellyn2006"></span> and, more recently,
+entity- versus activity-based regulation of fintech <span
+class="citation" data-cites="Restoy2021"></span>. The consumer-finance
+literature documents behavioural biases that justify price and conduct
+rules <span class="citation"
+data-cites="Campbell2011 BarGillWarren2008"></span>, the trade-offs of
+interest-rate caps <span class="citation"
+data-cites="MaimboHenriquez2014 Ferrari2018 SafavianZia2018"></span>,
+and mixed evidence on the welfare effects of high-cost credit <span
+class="citation"
+data-cites="Melzer2011 Morse2011 SkibaTobacman2019 Zinman2010"></span>.
+The law-and-economics literature on enforcement compares ex ante
+regulation with ex post liability <span class="citation"
+data-cites="Shavell1984 Kolstad1990 PolinskyShavell2000"></span> and
+analyses gatekeeper strategies <span class="citation"
+data-cites="Kraakman1986"></span>; we apply it to the reporting
+behaviour of victims of illegal lending. Finally, a growing literature
+on supervisory technology <span class="citation"
+data-cites="BroedersPrenio2018 diCastri2019"></span> and on predatory
+loan apps <span class="citation"
+data-cites="Ramesh2022 Munyendo2022"></span> motivates the detection
+pipeline in <a href="#sec:quant" data-reference-type="ref+label"
+data-reference="sec:quant">8</a>.</p>
+<h4 id="roadmap.">Roadmap.</h4>
+<p><a href="#sec:background" data-reference-type="ref+Label"
+data-reference="sec:background">2</a> describes Thailand’s market and
+the digital lending problem. <a href="#sec:framework"
+data-reference-type="ref+Label" data-reference="sec:framework">3</a>
+sets out the analytical framework and <a href="#sec:method"
+data-reference-type="ref+label" data-reference="sec:method">4</a> the
+method. <a href="#sec:comparative" data-reference-type="ref+Label"
+data-reference="sec:comparative">5</a> presents the comparative evidence
+and <a href="#sec:thailand" data-reference-type="ref+label"
+data-reference="sec:thailand">6</a> places Thailand within it. <a
+href="#sec:theory" data-reference-type="ref+Label"
+data-reference="sec:theory">7</a> develops the models and <a
+href="#sec:quant" data-reference-type="ref+label"
+data-reference="sec:quant">8</a> quantifies them. <a href="#sec:roadmap"
+data-reference-type="ref+Label" data-reference="sec:roadmap">9</a>
+proposes the roadmap, <a href="#sec:agenda"
+data-reference-type="ref+label" data-reference="sec:agenda">10</a> the
+research agenda and limitations, and <a href="#sec:conclusion"
+data-reference-type="ref+label" data-reference="sec:conclusion">11</a>
+concludes.</p>
+<h1 id="sec:background">Background: Thailand’s non-bank credit
+market</h1>
+<h2 id="a-layered-market">A layered market</h2>
+<p>Thai consumer credit is supplied by four layers. Commercial banks and
+specialised financial institutions serve borrowers with documented
+income. Licensed non-banks—credit-card issuers, supervised personal-loan
+companies, nano-finance and vehicle-title lenders—serve a riskier
+segment at higher, but capped, prices. Pico-finance companies, licensed
+province by province by the Fiscal Policy Office, serve small local
+borrowers. Below them sits an informal and illegal layer: community
+moneylenders, daily-repayment “loan sharks” and, since the late 2010s,
+unlicensed lending apps and websites.</p>
+<p>The size of the bottom layer is not measured systematically. In late
+2023 the government declared informal debt a national agenda; a
+registration drive run by the Ministry of Interior reportedly drew more
+than 100,000 debtors within weeks, reporting debts in the order of THB
+10 billion (approximate figures from official statements as reported at
+the time). These registrations mostly concern offline lenders and are
+self-selected, so they bound the problem from below rather than measure
+it.</p>
+<h2 id="illegal-digital-lending">Illegal digital lending</h2>
+<p>Illegal digital lending comes in five business models with different
+harms and legal hooks (<a href="#tab:taxonomy"
+data-reference-type="ref+label"
+data-reference="tab:taxonomy">[tab:taxonomy]</a>). The distinction
+matters for both detection and policy: advance-fee scams never lend and
+are fraud; predatory unlicensed lenders lend at extreme effective rates
+and collect through intimidation; rent-a-licence arrangements hide
+unlicensed operators behind licensed partners.</p>
+<div class="tabularx">
+<p><span>P<span>2.6cm</span>LLP<span>3.1cm</span></span> Type &amp;
+Business model &amp; Observable signals &amp; Strongest legal hook<br />
+T1 Predatory unlicensed lender &amp; Small loans, fees deducted upfront,
+7–14 day tenors, collection by contact-shaming &amp; No licence match;
+sensitive app permissions; harassment in reviews; clone clusters &amp;
+Excessive-interest law; data protection; debt-collection law<br />
+T2 Advance-fee loan scam &amp; Never lends; demands “processing” or
+“insurance” fees &amp; Upfront-fee language; impersonation of licensed
+brands; mule accounts &amp; Criminal fraud; technology-crime
+decree<br />
+T3 Rent-a-licence &amp; Unlicensed operator lends or collects through a
+licensed partner &amp; Licensee’s name on an unregistered channel &amp;
+Market-conduct and outsourcing rules<br />
+T4 Lead generator &amp; Collects applications and data, sells them to
+unlicensed lenders &amp; Comparison front end; broad data-sharing
+clauses &amp; Data protection; advertising rules<br />
+T5 Loan shark with online acquisition &amp; Daily-repayment loans
+marketed via messaging accounts and social media &amp; Daily-repayment
+terms; messaging IDs; phone numbers &amp; Excessive-interest law;
+criminal code<br />
+</p>
+</div>
+<p>Three features of this market shape the policy problem. First,
+operators are frequently offshore and judgment-proof; bank accounts used
+to disburse and collect are often held by nominees. Second, the harm
+suppresses its own reporting: a borrower threatened with exposure to
+family and employer has strong reasons not to complain, and many
+borrowers believe that, having “agreed” to the loan, they have no
+standing. Third, entry is cheap and repeatable, so a removed app is
+quickly replaced by a clone. Security researchers have documented
+predatory “SpyLoan” apps on Google Play targeting Thailand among other
+markets, and comparable markets show how large such ecosystems can grow:
+a working group of the Reserve Bank of India found that roughly 600 of
+about 1,100 lending apps available to Indian Android users were illegal
+<span class="citation" data-cites="RBI2021"></span>.</p>
+<h2 id="the-enforcement-default">The enforcement default</h2>
+<p>The BOT’s perimeter is entity-based: it licenses and supervises
+lenders, so an unlicensed lender is by definition outside its
+supervision. Action against unlicensed lenders is distributed across the
+police, the Ministry of Digital Economy and Society (website blocking
+under court order), the Personal Data Protection Committee, and the
+Ministry of Interior (debt collection). No agency owns the task of
+<em>finding</em> illegal digital lenders. In practice the trigger for
+action is a complaint, and the slowest step runs from evidence to a
+court-ordered block of a specific URL. <a href="#sec:theory"
+data-reference-type="ref+Label" data-reference="sec:theory">7</a> shows
+why this default is particularly poorly matched to the harm.</p>
+<h1 id="sec:framework">Analytical framework</h1>
+<p>Non-bank credit regimes differ along seven design dimensions. Each
+answers a distinct market failure and carries a known trade-off (<a
+href="#tab:dimensions" data-reference-type="ref+label"
+data-reference="tab:dimensions">[tab:dimensions]</a>).</p>
+<div class="tabularx">
+<p><span>P<span>2.35cm</span>P<span>3.1cm</span>LP<span>2.9cm</span></span>
+Dimension &amp; Question &amp; Main options &amp; Key trade-off<br />
+D1 Legal basis &amp; What instrument creates the regime? &amp; Dedicated
+statute; provisions in a general financial statute; secondary or
+delegated legislation &amp; Durability versus speed of amendment<br />
+D2 Perimeter &amp; What brings a lender inside? &amp; Product licences;
+entity licences; activity-based (“anyone who lends to consumers as a
+business”) &amp; Coverage versus supervisory cost<br />
+D3 Lead supervisor &amp; Who supervises conduct? &amp; Several
+authorities; central bank or integrated regulator; dedicated conduct
+regulator &amp; Data and expertise versus focus on conduct<br />
+D4 Price &amp; Is the price of credit limited? &amp; No cap; annual-rate
+cap; total-cost or per-day cap &amp; Protection versus credit
+rationing<br />
+D5 Affordability &amp; Is borrowing limited relative to income? &amp;
+Lender-level assessment; partial limits; system-wide limit via the
+credit bureau &amp; Over-indebtedness versus access<br />
+D6 Digital channels &amp; Are apps, platforms and agents covered? &amp;
+Nothing specific; rules and registration; public register of licensed
+channels with platform checks &amp; Consumer information versus
+upkeep<br />
+D7 Unlicensed lending &amp; What happens to lenders outside the
+perimeter? &amp; Criminal law only; civil or administrative
+consequences; standing task force or unenforceability &amp; Deterrence
+versus due process<br />
+</p>
+</div>
+<h2 id="theory-behind-each-dimension">Theory behind each dimension</h2>
+<p><strong>Architecture (D1, D3).</strong> The literature on supervisory
+structure contrasts integrated, sectoral and twin-peaks models <span
+class="citation" data-cites="Taylor1995 Llewellyn2006"></span>. Twin
+peaks separates prudential from conduct supervision, so that consumer
+protection is not crowded out by stability concerns. A central bank that
+supervises consumer credit brings data and credibility but may rank
+conduct below stability; a ministry brings democratic accountability but
+often lacks supervisory capacity. The legal basis matters independently:
+delegated instruments can be changed quickly but rarely carry
+administrative sanctions or investigative powers.</p>
+<p><strong>Perimeter (D2).</strong> Entity- and product-based perimeters
+invite arbitrage at the boundary: re-labelling a product, re-chartering
+an entity or partnering with a licensee. Rent-a-bank partnerships in the
+United States are the canonical example. Activity-based perimeters
+follow the economic function and so reduce arbitrage, at the cost of a
+larger supervised population <span class="citation"
+data-cites="Restoy2021"></span>.</p>
+<p><strong>Price (D4).</strong> Behavioural evidence shows that
+borrowers underweight fees, rollover costs and the probability of repeat
+borrowing <span class="citation"
+data-cites="Campbell2011 BarGillWarren2008"></span>. Caps can limit
+exploitation but can also ration credit to high-risk borrowers <span
+class="citation" data-cites="MaimboHenriquez2014 Ferrari2018"></span>;
+Kenya’s 2016–19 bank-rate cap reduced lending to small borrowers <span
+class="citation" data-cites="SafavianZia2018"></span>. For very short
+loans, an annual-rate cap is a weak instrument because fees dominate
+cost; total-cost and per-day caps target fee stacking directly.</p>
+<p><strong>Affordability (D5).</strong> Lender-level creditworthiness
+assessments cannot see borrowing from other lenders. System-wide limits,
+enforced through a credit bureau, address multi-lender stacking but
+require complete reporting by every lender.</p>
+<p><strong>Digital channels (D6).</strong> Consumers cannot easily
+verify whether an app, website or messaging account belongs to a
+licensee. Public registers of licensed channels and duties on platforms
+to check them address this information asymmetry and turn app stores
+into gatekeepers <span class="citation"
+data-cites="Kraakman1986"></span>.</p>
+<p><strong>Unlicensed lending (D7).</strong> Ex ante control dominates
+ex post liability when offenders are judgment-proof, victims do not sue
+and the regulator has an information advantage <span class="citation"
+data-cites="Shavell1984"></span>; the two can be complements when each
+alone is imperfect <span class="citation"
+data-cites="Kolstad1990"></span>. Making unlicensed loans unenforceable
+reduces the expected return to illegal lending without requiring a
+conviction, and standing task forces reduce the time between detection
+and disruption.</p>
+<h2 id="interactions">Interactions</h2>
+<p>The dimensions interact, and the interactions are the core of the
+policy argument. A tight price cap (D4) without enforcement against
+unlicensed lenders (D7) risks pushing rationed borrowers to illegal
+supply; <a href="#prop:cap" data-reference-type="ref+label"
+data-reference="prop:cap">5</a> formalises this complementarity. A wide
+perimeter (D2) without channel controls (D6) leaves consumers unable to
+tell who is inside it. And affordability limits (D5) are only as good as
+the coverage of the credit bureau, which depends on the perimeter
+(D2).</p>
+<h1 id="sec:method">Method</h1>
+<h2 id="approach">Approach</h2>
+<p>The study combines three methods. <em>Functional comparison</em>
+reads each regime for how it solves the same problems—who may lend, at
+what price, to whom, through which channels, and what happens to those
+who lend without permission—rather than for what its institutions are
+called <span class="citation" data-cites="ZweigertKotz1998"></span>.
+<em>Structured coding</em> places each regime on each dimension using
+ordinal categories (0, 1, 2) defined in a codebook (<a
+href="#app:codebook" data-reference-type="ref+label"
+data-reference="app:codebook">13</a>), in the spirit of leximetric
+comparative law <span class="citation" data-cites="Siems2005"></span>;
+ordinal categories avoid the false precision of continuous scores.
+<em>Process tracing</em> reconstructs, for six reforms, the trigger, the
+instrument chosen and the observed effects: Japan (2006), the United
+Kingdom (2014–15), India (2021–25), Kenya (2021–22), Indonesia (2016–24)
+and the Philippines (2019–22).</p>
+<h2 id="case-selection">Case selection</h2>
+<p>Cases were chosen to vary the explanatory dimensions while keeping a
+core of comparable markets (<a href="#tab:cases"
+data-reference-type="ref+label"
+data-reference="tab:cases">[tab:cases]</a>).</p>
+<div class="tabularx">
+<p><span>P<span>4.3cm</span>P<span>4.1cm</span>L</span> Group &amp;
+Cases &amp; Rationale<br />
+Most-similar Asian peers &amp; India, Indonesia, Philippines, Malaysia
+&amp; Middle-income; fast digital-credit growth; illegal-app
+problems<br />
+High-income Asian benchmarks &amp; Singapore, Japan &amp; Mature regimes
+with hard price and volume limits<br />
+Central-bank model outside Asia &amp; Kenya &amp; Central bank licensing
+digital lenders directly<br />
+Conduct-regulator models &amp; United Kingdom, Australia &amp;
+Activity-based perimeters; total-cost price rules<br />
+Supranational standard &amp; European Union &amp; Harmonised rules
+applying from November 2026<br />
+Cautionary case &amp; United States &amp; Fragmented state regimes;
+rent-a-bank evasion<br />
+</p>
+</div>
+<p>China is discussed as context because of the scale of its
+peer-to-peer lending crackdown (2016–2020), which displaced operators to
+South and Southeast Asia, but it is not coded: its consumer-credit
+framework rests largely on judicial interpretation and platform rules
+that do not map cleanly onto the seven dimensions.</p>
+<h2 id="sources-coding-and-validity">Sources, coding and validity</h2>
+<p>Codings draw on statutes, regulations and central-bank directions,
+supplemented by IMF, World Bank and BIS documents and academic studies
+of each reform. Each regime is coded for the law in force at a stated
+date. Two threats to validity deserve emphasis. First, coding captures
+law on paper, not enforcement in practice; dimension D7 partly
+compensates by coding institutional structures for enforcement. Second,
+ordinal codes compress real differences: a code of 2 on price (D4) means
+a total-cost or per-day rule, whether it binds at 0.1 or 0.8 per cent a
+day. The composite score reported in <a href="#fig:heatmap"
+data-reference-type="ref+label" data-reference="fig:heatmap">2</a> is an
+unweighted sum intended only for orientation. In this version, codings
+are provisional: they have not yet been validated by independent local
+experts, and inter-coder reliability has not been measured.</p>
+<h1 id="sec:comparative">Comparative evidence</h1>
+<h2 id="asia">Asia</h2>
+<h4
+id="india-central-bank-scale-based-rules-digital-first-conduct.">India:
+central bank, scale-based rules, digital-first conduct.</h4>
+<p>The Reserve Bank of India registers and supervises non-bank financial
+companies under Chapter IIIB of the RBI Act 1934 and, since 2021,
+applies a scale-based framework with four layers of rising requirements.
+Its 2022 digital lending guidelines require loans to flow directly
+between the borrower’s and the lender’s bank accounts, a standard key
+fact statement with an all-in annual percentage rate, a cooling-off
+period, and need-based data collection without access to contacts or
+media files. Directions issued in 2025 consolidated these rules and
+introduced a public directory of licensed lenders’ apps. There is no
+general rate cap; microfinance caps were replaced in 2022 by a household
+repayment limit of 50 per cent of income. A draft bill to ban
+unregulated lending was published for consultation in December 2024.</p>
+<h4
+id="indonesia-integrated-regulator-daily-cost-caps-a-task-force.">Indonesia:
+integrated regulator, daily cost caps, a task force.</h4>
+<p>The Financial Services Authority (OJK) licenses multifinance
+companies and peer-to-peer lenders. Law No. 4 of 2023 on the financial
+sector widened its powers, including over illegal activity. OJK has
+capped the total daily “economic benefit” of consumer peer-to-peer
+loans, stepping the cap down towards 0.1 per cent a day by 2026, and
+limits the number of platforms from which one borrower may borrow. A
+standing inter-agency task force, now known as Satgas PASTI, publishes
+lists of illegal entities and has shut down several thousand illegal
+online lenders since 2018, with blocking carried out by the
+communications ministry.</p>
+<h4
+id="philippines-securities-regulator-plus-central-bank-caps.">Philippines:
+securities regulator plus central-bank caps.</h4>
+<p>Lending and financing companies are registered and supervised by the
+Securities and Exchange Commission. Online lending platforms must be
+registered (2019), and a 2019 circular bans unfair collection practices
+including contact-shaming. Central Bank Circular 1133 (2021) capped
+small, short-term unsecured loans at about 6 per cent a month nominal,
+15 per cent a month effective, and total charges at 100 per cent of
+principal; the SEC extended these caps to its registrants. The Financial
+Products and Services Consumer Protection Act (2022) added
+market-conduct powers.</p>
+<h4
+id="malaysia-from-a-1951-ministry-law-to-a-consumer-credit-regulator.">Malaysia:
+from a 1951 ministry law to a consumer-credit regulator.</h4>
+<p>Moneylenders are licensed by the Ministry of Local Government
+Development under the Moneylenders Act 1951, with caps of 12 per cent a
+year for secured and 18 per cent for unsecured loans. A Consumer Credit
+Act passed in 2025 creates a dedicated regulator for non-bank credit and
+buy-now-pay-later. Bank Negara Malaysia publishes a Financial Consumer
+Alert List of unlicensed entities.</p>
+<h4 id="singapore-hard-price-volume-and-channel-limits.">Singapore: hard
+price, volume and channel limits.</h4>
+<p>The Ministry of Law’s Registry of Moneylenders licenses moneylenders
+under the Moneylenders Act 2008. Since 2015, interest and late interest
+are each capped at 4 per cent a month and all charges together may not
+exceed the principal. Total unsecured borrowing from moneylenders is
+limited relative to income and checked through a dedicated credit
+bureau. Unlicensed moneylending and harassment carry severe criminal
+penalties.</p>
+<h4 id="japan-the-2006-reform.">Japan: the 2006 reform.</h4>
+<p>The amendment of the Money Lending Business Act, fully in force by
+2010, cut the legal ceiling to 15–20 per cent a year according to loan
+size, abolished a “grey zone” up to 29.2 per cent, and limited total
+unsecured borrowing from moneylenders to one-third of annual income,
+checked through designated credit bureaus. The market contracted
+sharply; evidence on displacement to illegal lenders is mixed. A 2008
+Supreme Court decision held that black-market lenders cannot set off the
+principal they lent against victims’ claims.</p>
+<h2 id="reference-systems-outside-asia">Reference systems outside
+Asia</h2>
+<h4 id="kenya-the-central-bank-licenses-digital-lenders.">Kenya: the
+central bank licenses digital lenders.</h4>
+<p>The Central Bank of Kenya (Amendment) Act 2021 brought
+non-deposit-taking digital credit providers under the central bank, with
+regulations in 2022. Only a fraction of applicants were licensed in the
+first rounds, and Google Play began requiring a central-bank licence for
+Kenyan loan apps. The data-protection commissioner has fined digital
+lenders for contacting borrowers’ third parties.</p>
+<h4
+id="united-kingdom-activity-based-perimeter-and-a-total-cost-cap.">United
+Kingdom: activity-based perimeter and a total-cost cap.</h4>
+<p>Consumer credit moved to the Financial Conduct Authority (FCA) in
+2014. Lending to consumers is a regulated activity under the Financial
+Services and Markets Act 2000 (FSMA), whoever conducts it. Since 2015,
+high-cost short-term credit has been capped at 0.8 per cent a day,
+default fees at £15 and total cost at 100 per cent of the amount
+borrowed. Lending without authorisation is a criminal offence,
+agreements made by unauthorised lenders are unenforceable against the
+borrower (FSMA s.26), and dedicated Illegal Money Lending Teams
+investigate proactively.</p>
+<h4
+id="australia-responsible-lending-and-product-intervention.">Australia:
+responsible lending and product intervention.</h4>
+<p>ASIC supervises credit under the National Consumer Credit Protection
+Act 2009. Small-amount credit contracts are limited to an establishment
+fee of 20 per cent and a monthly fee of 4 per cent, and other consumer
+credit to 48 per cent a year including fees. Statutory
+responsible-lending obligations and a product-intervention power (2019)
+complete the toolkit.</p>
+<h4 id="european-union-the-revised-consumer-credit-directive.">European
+Union: the revised Consumer Credit Directive.</h4>
+<p>Directive (EU) 2023/2225 applies from 20 November 2026. It extends
+coverage to small loans and most buy-now-pay-later, requires member
+states to adopt measures against excessive pricing—caps on interest, the
+annual percentage rate or total cost—and requires non-bank creditors to
+be authorised or registered and supervised.</p>
+<h4 id="united-states-the-cost-of-fragmentation.">United States: the
+cost of fragmentation.</h4>
+<p>States license lenders and set usury limits; the Consumer Financial
+Protection Bureau polices unfair, deceptive or abusive practices
+federally. The Military Lending Act caps loans to service members at 36
+per cent all-in. Rent-a-bank partnerships and tribal lending exploit
+gaps between state and federal regimes—the closest analogue to
+rent-a-licence arrangements in Thailand.</p>
+<h2 id="the-coded-comparison">The coded comparison</h2>
+<p><a href="#tab:matrix" data-reference-type="ref+Label"
+data-reference="tab:matrix">[tab:matrix]</a> reports the coding in words
+and <a href="#fig:heatmap" data-reference-type="ref+label"
+data-reference="fig:heatmap">2</a> in ordinal form. <a
+href="#fig:quadrant" data-reference-type="ref+Label"
+data-reference="fig:quadrant">3</a> projects the regimes onto the two
+dimensions most relevant to illegal lending: the breadth of the
+perimeter (D2) and whether the response to unlicensed lenders extends
+beyond criminal law (D6 or D7).</p>
+<div class="tabularx">
+<p><span>P<span>1.55cm</span>P<span>1.45cm</span>P<span>1.45cm</span>P<span>1.75cm</span>P<span>1.9cm</span>LP<span>1.95cm</span>P<span>1.95cm</span></span>
+Regime &amp; D1 Legal basis &amp; D2 Perimeter &amp; D3 Lead supervisor
+&amp; D4 Price &amp; D5 Affordability &amp; D6 Digital channels &amp; D7
+Unlicensed lending<br />
+<strong>Thailand</strong> &amp; Secondary legislation &amp; Product
+&amp; Central bank (delegated) and four others &amp; Annual rate per
+product &amp; Lender-level &amp; Nothing specific &amp; Criminal law
+only<br />
+India &amp; General statute &amp; Entity &amp; Central bank &amp;
+Disclosure; no general cap &amp; Microfinance household limit &amp;
+Rules; public app directory &amp; Criminal; ban bill drafted; reporting
+portal<br />
+Indonesia &amp; General statute &amp; Entity &amp; Integrated regulator
+&amp; Daily total-cost cap (P2P) &amp; Platforms-per-borrower limit
+&amp; Licensing; list of legal platforms &amp; Standing task force;
+blocking<br />
+Philippines &amp; Dedicated statute &amp; Entity &amp; Securities
+regulator; central-bank caps &amp; Monthly and total-cost caps &amp;
+Lender-level &amp; Platform registration &amp; Takedowns;
+revocations<br />
+Malaysia &amp; Dedicated statute (new 2025) &amp; Entity, moving to
+activity &amp; Ministry, moving to new regulator &amp; Annual cap &amp;
+Lender-level &amp; Alert list &amp; Criminal law<br />
+Singapore &amp; Dedicated statute &amp; Entity &amp; Ministry registry
+&amp; Monthly and total-cost caps &amp; System-wide limit &amp;
+Advertising limits &amp; Severe criminal penalties<br />
+Japan &amp; Dedicated statute &amp; Entity &amp; FSA and prefectures
+&amp; Annual cap, 15–20% &amp; System-wide: one-third of income &amp;
+Nothing specific &amp; Criminal; no set-off of principal<br />
+Kenya &amp; General statute &amp; Activity (digital credit) &amp;
+Central bank &amp; None &amp; Lender-level &amp; Licence checked by app
+store &amp; Licensing; data-protection fines<br />
+United Kingdom &amp; Dedicated statute &amp; Activity &amp; Conduct
+regulator &amp; Total-cost cap (short-term credit) &amp; Lender-level
+rules &amp; Promotions regime; platform duties &amp; Criminal;
+unenforceable; proactive teams<br />
+Australia &amp; Dedicated statute &amp; Activity &amp; Conduct regulator
+&amp; Fee caps; 48% all-in &amp; Statutory responsible lending &amp;
+Channel-relevant intervention power &amp; Civil penalties<br />
+European Union &amp; Dedicated directive &amp; Activity &amp; National
+authorities &amp; Caps required; form open &amp; Creditworthiness
+assessment &amp; Advertising rules &amp; Authorisation required<br />
+United States &amp; State statutes &amp; Entity, by state &amp; States
+and federal bureau &amp; State usury; 36% for service members &amp;
+Varies &amp; Varies &amp; Varies; rent-a-bank gaps<br />
+</p>
+</div>
+<figure id="fig:heatmap" data-latex-placement="htbp">
+<img src="figs/fig3_heatmap.png" />
+<figcaption>Ordinal coding of twelve regimes on seven design dimensions
+(0 = weakest option, 2 = strongest; definitions in <a
+href="#app:codebook" data-reference-type="ref+label"
+data-reference="app:codebook">13</a>). The composite on the right is an
+unweighted sum for orientation only. Coding is provisional and from
+secondary knowledge; it has not yet been validated by local
+experts.</figcaption>
+</figure>
+<figure id="fig:quadrant" data-latex-placement="htbp">
+<img src="figs/fig4_quadrant.png" style="width:92.0%" />
+<figcaption>Regimes by perimeter (D2) and response to unlicensed lenders
+(D6, D7). A regime is placed in the upper half if it has a public
+register of licensed channels or platform checks (D6 = 2) or any
+non-criminal consequence or standing structure for unlicensed lending
+(D7 <span class="math inline">\(\geq\)</span> 1). Positions within a
+quadrant carry no meaning.</figcaption>
+</figure>
+<h2 id="recurring-lessons">Recurring lessons</h2>
+<p>Four lessons recur across the cases.</p>
+<ol>
+<li><p><strong>Price and enforcement move together.</strong> Regimes
+that tightened prices—the United Kingdom in 2015, Japan in 2006, the
+Philippines in 2021, Indonesia from 2023—also tightened the perimeter or
+enforcement at the same time. None relied on a cap alone.</p></li>
+<li><p><strong>Short loans need total-cost rules.</strong> Every regime
+that regulates the price of very short loans does so with a total-cost
+or per-period cap, not an annual-rate cap.</p></li>
+<li><p><strong>Digital channels are now regulated directly.</strong>
+Registers of licensed apps (India), licence checks by app stores
+(Kenya), lists of legal platforms (Indonesia) and platform duties
+(United Kingdom) have joined entity licensing.</p></li>
+<li><p><strong>The strongest deterrent is economic.</strong>
+Unenforceability (United Kingdom) and the denial of principal set-off
+(Japan) remove the return to illegal lending without waiting for a
+conviction.</p></li>
+</ol>
+<h1 id="sec:thailand">Thailand in comparative perspective</h1>
+<h2 id="who-regulates-what">Who regulates what</h2>
+<p>Thailand’s central bank supervises most non-bank consumer lending,
+but by delegation under MOF notifications, product by product, with
+other lenders spread across four more authorities (<a href="#tab:thai"
+data-reference-type="ref+label"
+data-reference="tab:thai">[tab:thai]</a>). <a href="#fig:timeline"
+data-reference-type="ref+Label" data-reference="fig:timeline">4</a>
+traces how the architecture accumulated.</p>
+<div class="tabularx">
+<p><span>LP<span>3.3cm</span>P<span>4.2cm</span>P<span>2.0cm</span></span>
+Segment &amp; Supervisor &amp; Legal basis &amp; Ceiling (% a
+year)<br />
+Commercial banks &amp; BOT &amp; Financial Institutions Businesses Act
+2008 &amp; As for products<br />
+Credit cards; supervised personal loans; nano-finance; vehicle-title
+loans; digital personal loans (non-banks) &amp; BOT, by delegation &amp;
+Revolutionary Council Announcement No. 58 (1972) and MOF notifications
+&amp; 16; 25; 33; tiered<br />
+Pico-finance &amp; Fiscal Policy Office (MOF) &amp; MOF notifications
+&amp; 36<br />
+Car and motorcycle hire purchase &amp; Office of the Consumer Protection
+Board &amp; Controlled-business notification &amp; By vehicle type<br />
+Pawnshops &amp; Ministry of Interior &amp; Pawnshop Act 1962 &amp;
+Statutory<br />
+Savings cooperatives &amp; Cooperative Promotion Department &amp;
+Cooperatives Act &amp; Set by cooperatives<br />
+Debt collection by anyone &amp; Debt Collection Supervisory Committee
+&amp; Debt Collection Act 2015 &amp; –<br />
+Any unlicensed lender &amp; None &amp; Civil and Commercial Code s.654;
+Excessive Interest Act 2017 &amp; 15<br />
+</p>
+</div>
+<figure id="fig:timeline" data-latex-placement="htbp">
+<img src="figs/fig2_thai_timeline.png" />
+<figcaption>Milestones in the Thai regulation of consumer lending,
+1972–2025, coloured by the design dimension each addressed. Dates as
+understood by the author; to be verified.</figcaption>
+</figure>
+<h2 id="strengths">Strengths</h2>
+<p>Three strengths stand out. First, one supervisor sees banks and most
+non-banks together, with supervisory reporting and credit-bureau data—an
+informational advantage that conduct regulators elsewhere often lack.
+Second, the BOT’s responsible-lending rules (in force from 2024) go
+beyond many peers in addressing persistent revolving debt and fair
+treatment. Third, at 16–33 per cent a year for most products, Thai rate
+ceilings are among the lowest of middle-income peers.</p>
+<h2 id="five-gaps">Five gaps</h2>
+<ol>
+<li><p><strong>Instrument (D1).</strong> A 1972 announcement plus
+ministerial notifications limits the sanctions and investigative powers
+available to the supervisor, and can be changed without Parliament.
+Thailand is the only regime in the sample whose non-bank consumer credit
+rules rest mainly on secondary legislation.</p></li>
+<li><p><strong>Seams in the perimeter (D2).</strong> Five authorities
+cover consumer lending, and lenders can re-label products to move
+between regimes. Peers that consolidated did so by defining the
+<em>activity</em>, not by merging agencies.</p></li>
+<li><p><strong>Price rules that miss short loans (D4).</strong>
+Annual-rate ceilings say little about fee-heavy loans of 7–30 days,
+which dominate illegal digital lending.</p></li>
+<li><p><strong>No limit across lenders (D5).</strong> Affordability is
+assessed lender by lender; Japan and Singapore cap total borrowing
+system-wide through the credit bureau.</p></li>
+<li><p><strong>Nothing between licence and prison (D6, D7).</strong>
+Thailand has no register of licensed lenders’ digital channels, no
+standing task force and no rule making unlicensed loans
+unenforceable.</p></li>
+</ol>
+<h2 id="should-the-central-bank-remain-in-charge">Should the central
+bank remain in charge?</h2>
+<p>Thailand shares the central-bank model with India and Kenya. The case
+for keeping it rests on concentrated expertise, credit data and
+institutional credibility. The case against is that conduct supervision
+may rank below stability, and that a perimeter covering pawnshops,
+cooperatives and hire purchase would stretch the BOT’s mandate. The
+United Kingdom and Australia chose separate conduct regulators; Malaysia
+is creating one. A middle path keeps the BOT as consumer-credit
+authority but gives it a statutory mandate and a dedicated conduct
+function. That choice is ultimately political; this paper sets out the
+trade-offs rather than settling it.</p>
+<h1 id="sec:theory">A theory of enforcement against unlicensed
+lenders</h1>
+<p>This section develops three models. Model 1 explains why
+complaint-driven enforcement under-performs against this harm; Model 2
+ranks enforcement levers by their effect on the number of illegal
+operators; Model 3 links price caps to enforcement. Proofs are in <a
+href="#app:proofs" data-reference-type="ref+label"
+data-reference="app:proofs">12</a>; notation is summarised in <a
+href="#tab:notation" data-reference-type="ref+label"
+data-reference="tab:notation">[tab:notation]</a>.</p>
+<div class="tabularx">
+<p><span>P<span>1.5cm</span>LP<span>1.5cm</span>L</span> Symbol &amp;
+Meaning &amp; Symbol &amp; Meaning<br />
+<span class="math inline">\(u\)</span> &amp; New victims per day of one
+app &amp; <span class="math inline">\(\eta\)</span> &amp; Hazard of
+automated detection<br />
+<span class="math inline">\(\theta\)</span> &amp; Probability a victim
+reports &amp; <span class="math inline">\(D, D_P\)</span> &amp;
+Processing delay, reactive and proactive<br />
+<span class="math inline">\(K\)</span> &amp; Complaints needed to
+trigger action &amp; <span class="math inline">\(M\)</span> &amp; Apps
+run by one operator<br />
+<span class="math inline">\(\delta\)</span> &amp; Takedown hazard &amp;
+<span class="math inline">\(\kappa\)</span> &amp; Elasticity of entry to
+operator value<br />
+<span class="math inline">\(r\)</span> &amp; Net flow profit of an
+operator &amp; <span class="math inline">\(\rho\)</span> &amp; Discount
+rate<br />
+<span class="math inline">\(\bar{r}\)</span> &amp; Price cap &amp; <span
+class="math inline">\(s(\delta)\)</span> &amp; Share of rationed
+borrowers reaching illegal lenders<br />
+<span class="math inline">\(h\)</span> &amp; Harm per illegal loan &amp;
+<span class="math inline">\(b\)</span> &amp; Surplus per legal
+loan<br />
+</p>
+</div>
+<h2 id="model-1-the-reporting-propensity-trap">Model 1: the
+reporting-propensity trap</h2>
+<div id="ass:m1" class="assumption">
+<p><strong>Assumption 1</strong>. Victims of an app arrive according to
+a point process with long-run rate <span
+class="math inline">\(u&gt;0\)</span>. Each victim independently files a
+complaint with probability <span
+class="math inline">\(\theta\in(0,1)\)</span>. Under
+<em>complaint-driven</em> enforcement the authority acts after the <span
+class="math inline">\(K\)</span>-th complaint, and removal follows after
+a processing delay <span class="math inline">\(D\)</span>. Under
+<em>detection-driven</em> enforcement, detection occurs at a hazard
+<span class="math inline">\(\eta\)</span> independent of victims, and
+removal follows after a delay <span
+class="math inline">\(D_P\)</span>.</p>
+</div>
+<div id="prop:allowance" class="proposition">
+<p><strong>Proposition 1</strong> (Free-harm allowance). <em>Under
+complaint-driven enforcement, the expected number of victims before
+removal is <span class="math display">\[\begin{equation}
+\mathbb{E}[V^R] = \frac{K}{\theta} + uD, \qquad
+\operatorname{Var}\!\left[V_K\right] = \frac{K(1-\theta)}{\theta^2},
+\label{eq:allowance}
+\end{equation}\]</span> where <span class="math inline">\(V_K\)</span>
+is the number of victims up to and including the <span
+class="math inline">\(K\)</span>-th complaint. The first term does not
+depend on the app’s size <span class="math inline">\(u\)</span> or on
+the timing of arrivals.</em></p>
+</div>
+<p>The intuition is that complaints are a thinned sample of victims: to
+collect <span class="math inline">\(K\)</span> complaints, an authority
+must wait for <span class="math inline">\(K/\theta\)</span> victims on
+average, however quickly or slowly they arrive. With <span
+class="math inline">\(\theta = 0.05\)</span> and <span
+class="math inline">\(K = 10\)</span>, every app carries an allowance of
+200 victims before enforcement is triggered. <a href="#fig:model1"
+data-reference-type="ref+Label" data-reference="fig:model1">5</a>(a)
+plots the allowance against <span
+class="math inline">\(\theta\)</span>.</p>
+<div id="prop:fragment" class="proposition">
+<p><strong>Proposition 2</strong> (Fragmentation). <em>Let an operator
+spread a total victim flow <span class="math inline">\(U\)</span> evenly
+across <span class="math inline">\(M\)</span> apps. Under
+complaint-driven enforcement, expected victims before all apps are
+removed are <span class="math inline">\(MK/\theta + UD\)</span>,
+increasing linearly in <span class="math inline">\(M\)</span>. Under
+detection-driven enforcement they are <span
+class="math inline">\(U(1/\eta + D_P)\)</span>, independent of <span
+class="math inline">\(M\)</span>. If each victim yields margin <span
+class="math inline">\(m\)</span> and each app costs <span
+class="math inline">\(c\)</span>, splitting into more apps is profitable
+under complaint-driven enforcement if and only if <span
+class="math inline">\(mK/\theta &gt; c\)</span>, and never under
+detection-driven enforcement.</em></p>
+</div>
+<div id="prop:dominance" class="proposition">
+<p><strong>Proposition 3</strong> (Dominance of detection).
+<em>Detection-driven enforcement produces fewer expected victims than
+complaint-driven enforcement if and only if <span
+class="math display">\[\begin{equation}
+\frac{1}{\eta} + D_P - D &lt; \frac{K}{\theta u}.
+\label{eq:dominance}
+\end{equation}\]</span> With equal processing delays, detection
+dominates for every app with <span class="math inline">\(u &lt;
+K\eta/\theta\)</span>.</em></p>
+</div>
+<div class="remark">
+<p><em>Remark 1</em> (Adverse selection in enforcement). If the
+reporting propensity <span class="math inline">\(\theta(a)\)</span>
+falls with the abusiveness <span class="math inline">\(a\)</span> of
+collection—because shaming and threats deter reporting—then <span
+class="math inline">\(\mathbb{E}[V^R]\)</span> rises with <span
+class="math inline">\(a\)</span> while <span
+class="math inline">\(\mathbb{E}[V^P]\)</span> does not.
+Complaint-driven enforcement is therefore weakest against the most
+abusive operators.</p>
+</div>
+<figure id="fig:model1" data-latex-placement="htbp">
+<img src="figs/fig5_model1.png" />
+<figcaption>Model 1. (a) Expected victims before complaint-driven
+enforcement is triggered, <span class="math inline">\(K/\theta\)</span>,
+for four thresholds <span class="math inline">\(K\)</span>; the dashed
+line shows victims before detection-driven action for an app with <span
+class="math inline">\(u=5\)</span> new victims a day and detection
+hazard <span class="math inline">\(\eta=0.5\)</span>. (b) Ratio of
+victims before the trigger under the two regimes, for <span
+class="math inline">\(K=10\)</span> and <span
+class="math inline">\(\eta=0.5\)</span> with equal processing delays;
+below the “equal harm” curve, detection prevents more harm.</figcaption>
+</figure>
+<p><a href="#fig:model1" data-reference-type="ref+Label"
+data-reference="fig:model1">5</a>(b) maps <a href="#eq:dominance"
+data-reference-type="eqref"
+data-reference="eq:dominance">[eq:dominance]</a>. Complaint-driven
+enforcement only acts first for apps that are both very large and whose
+victims report readily—the upper right of the panel. For the long tail
+of small clone apps, and for any app that collects by shaming, detection
+dominates by orders of magnitude.</p>
+<h2 id="model-2-free-entry-and-the-ranking-of-levers">Model 2: free
+entry and the ranking of levers</h2>
+<div id="ass:m2" class="assumption">
+<p><strong>Assumption 2</strong>. Potential operators arrive at rate
+<span class="math inline">\(\lambda\)</span> with entry costs drawn from
+a distribution <span class="math inline">\(F\)</span>. A live operator
+earns net flow profit <span class="math inline">\(r\)</span> until
+takedown, which arrives at hazard <span
+class="math inline">\(\delta\)</span>; the discount rate is <span
+class="math inline">\(\rho\)</span>. An operator enters if the value of
+operating, <span class="math inline">\(V = r/(\rho+\delta)\)</span>,
+exceeds its entry cost.</p>
+</div>
+<p>The entry flow is <span class="math inline">\(\lambda F(V)\)</span>,
+and since each operator survives on average <span
+class="math inline">\(1/\delta\)</span>, the steady-state stock of
+operators is <span class="math display">\[\begin{equation}
+N^* = \frac{\lambda F\!\left(r/(\rho+\delta)\right)}{\delta}.
+\label{eq:stock}
+\end{equation}\]</span></p>
+<div id="prop:entry" class="proposition">
+<p><strong>Proposition 4</strong> (Takedown speed deters entry). <em>Let
+<span class="math inline">\(\kappa = f(V)V/F(V)\)</span> denote the
+elasticity of entry with respect to operator value. Then <span
+class="math display">\[\begin{equation}
+\varepsilon_{N,\delta} = -1 - \kappa\,\frac{\delta}{\rho+\delta} &lt;
+-1, \qquad \varepsilon_{N,r} = \kappa &gt; 0.
+\label{eq:elasticities}
+\end{equation}\]</span> Faster takedown reduces the steady-state stock
+more than proportionally, because it both shortens the life of existing
+operators and deters entry.</em></p>
+</div>
+<div id="cor:reactive" class="corollary">
+<p><strong>Corollary 1</strong>. <em>Under complaint-driven enforcement
+the takedown hazard is approximately <span
+class="math display">\[\delta_R(\theta) = \frac{1}{K/(\theta u) +
+D},\]</span> which is increasing in <span
+class="math inline">\(\theta\)</span>. The steady-state stock of
+operators is therefore largest where victims are least likely to
+report.</em></p>
+</div>
+<p><a href="#prop:entry" data-reference-type="ref+Label"
+data-reference="prop:entry">4</a> sorts policy levers into three
+families. Levers that <em>raise <span
+class="math inline">\(\delta\)</span></em>—continuous detection,
+standardised evidence, fast-track blocking—have an elasticity above one
+in absolute value. Levers that <em>lower <span
+class="math inline">\(r\)</span></em>—unenforceability of illegal loans,
+interdiction of collection accounts, bans on the app permissions that
+give collectors leverage—act through the entry margin with elasticity
+<span class="math inline">\(\kappa\)</span>. Levers that <em>raise entry
+costs</em>—developer and advertiser verification, licence checks at
+listing, penalties for mule accounts—shift <span
+class="math inline">\(F\)</span>. <a href="#fig:model2"
+data-reference-type="ref+Label" data-reference="fig:model2">6</a>
+illustrates the magnitudes.</p>
+<figure id="fig:model2" data-latex-placement="htbp">
+<img src="figs/fig6_model2.png" />
+<figcaption>Model 2. (a) Steady-state number of operators relative to a
+takedown hazard of 0.01 a day, for entry elasticities <span
+class="math inline">\(\kappa\)</span> (constant-elasticity entry, <span
+class="math inline">\(\rho = 0.0003\)</span> a day). (b) Ratio of the
+stock under complaint-driven enforcement to the stock under
+detection-driven enforcement, as a function of the reporting propensity
+(<span class="math inline">\(u=5\)</span>, <span
+class="math inline">\(K=10\)</span>, <span
+class="math inline">\(D=30\)</span>, <span
+class="math inline">\(\eta=0.5\)</span>, <span
+class="math inline">\(D_P=7\)</span>). Parameter values are
+hypothetical.</figcaption>
+</figure>
+<h2 id="model-3-price-caps-and-enforcement-as-complements">Model 3:
+price caps and enforcement as complements</h2>
+<div id="ass:m3" class="assumption">
+<p><strong>Assumption 3</strong>. A unit mass of borrowers has default
+probabilities <span class="math inline">\(p\)</span> uniformly
+distributed on <span class="math inline">\([0, \bar p]\)</span>. Legal
+lenders break even at the rate <span class="math inline">\(r(p) =
+(\rho_0 + p)/(1-p)\)</span>, where <span
+class="math inline">\(\rho_0\)</span> is their funding and operating
+cost. Under a cap <span class="math inline">\(\bar{r}\)</span>, legal
+lenders serve borrowers with <span class="math inline">\(p \le \hat
+p(\bar{r}) = (\bar{r}-\rho_0)/(1+\bar{r})\)</span> and charge them <span
+class="math inline">\(\bar{r}\)</span>. Each served borrower generates
+surplus <span class="math inline">\(b\)</span>, less an exploitation
+cost <span class="math inline">\(\omega(\bar{r}- r(p))\)</span> from
+paying above cost. A rationed borrower reaches an illegal lender with
+probability <span class="math inline">\(s(\delta)\)</span>, decreasing
+in enforcement intensity <span class="math inline">\(\delta\)</span>,
+and then suffers harm <span class="math inline">\(h\)</span>.</p>
+</div>
+<p>Welfare per borrower is <span class="math display">\[\begin{equation}
+W(\bar{r},\delta) = \frac{1}{\bar p}\left[\int_0^{\hat p(\bar{r})}
+\big(b - \omega(\bar{r}- r(p))\big)\,dp \;-\; s(\delta)\,h\,\big(\bar p
+- \hat p(\bar{r})\big)\right].
+\label{eq:welfare}
+\end{equation}\]</span></p>
+<div id="prop:cap" class="proposition">
+<p><strong>Proposition 5</strong> (Optimal cap). <em>At an interior
+optimum, the welfare-maximising cap solves <span
+class="math inline">\((\bar{r}-\rho_0)(1+\bar{r}) = A\)</span>, with
+<span class="math inline">\(A = (b +
+s(\delta)h)(1+\rho_0)/\omega\)</span>, so that <span
+class="math display">\[\begin{equation}
+\bar{r}^* = \tfrac{1}{2}\Big[-(1-\rho_0) + \sqrt{(1-\rho_0)^2 + 4(\rho_0
++ A)}\Big].
+\label{eq:cap}
+\end{equation}\]</span> The optimal cap is increasing in the harm <span
+class="math inline">\(h\)</span> from illegal lending and decreasing in
+enforcement intensity <span class="math inline">\(\delta\)</span>.
+Moreover <span class="math inline">\(\partial^2
+W/\partial\bar{r}\,\partial\delta = h\,s&#39;(\delta)\,\hat
+p&#39;(\bar{r})/\bar p &lt; 0\)</span>: tighter caps and stronger
+enforcement are complements.</em></p>
+</div>
+<p>The intuition is straightforward. A tighter cap protects the
+borrowers who are still served but rations more borrowers out of legal
+credit. How costly that rationing is depends on where the rationed
+borrowers go—which is exactly what enforcement against unlicensed
+lenders controls. <a href="#fig:model3" data-reference-type="ref+Label"
+data-reference="fig:model3">7</a> shows that, under illustrative
+parameters, the optimal cap falls from about 50 to about 22 per cent a
+year as enforcement moves from weak to strong. The policy implication is
+one of sequencing: building enforcement against unlicensed lenders makes
+low caps safer.</p>
+<figure id="fig:model3" data-latex-placement="htbp">
+<img src="figs/fig7_model3.png" style="width:68.0%" />
+<figcaption>Model 3. Welfare-maximising cap as a function of enforcement
+intensity, for three levels of harm per illegal loan. Parameters: <span
+class="math inline">\(\rho_0 = 0.12\)</span>, <span
+class="math inline">\(b = 0.10\)</span>, <span
+class="math inline">\(\omega = 1\)</span>, <span
+class="math inline">\(s(\delta) = 0.8/(1+\delta/\delta_0)\)</span>.
+Values are illustrative; the dashed line marks Thailand’s approximate
+ceiling for supervised personal loans.</figcaption>
+</figure>
+<h1 id="sec:quant">Quantitative illustrations</h1>
+<p>This section quantifies the mechanisms of <a href="#sec:theory"
+data-reference-type="ref+label" data-reference="sec:theory">7</a> and
+tests a detection pipeline. All results use synthetic data and
+hypothetical parameters; none is an estimate for the Thai market.</p>
+<h2 id="monte-carlo-comparison-of-enforcement-regimes">Monte Carlo
+comparison of enforcement regimes</h2>
+<p>We simulate 200,000 illegal apps. Daily victim inflow is log-normal
+with a median of 5 and a log standard deviation of 1. Half of the apps
+collect by shaming, with reporting propensity <span
+class="math inline">\(\theta = 0.02\)</span>; the other half use
+standard collection, with <span class="math inline">\(\theta =
+0.10\)</span>. Operators abandon apps at a rate of 1/180 a day,
+independently of enforcement. We compare four regimes:</p>
+<ul>
+<li><p><strong>R</strong>, complaint-driven: action after <span
+class="math inline">\(K = 10\)</span> complaints plus <span
+class="math inline">\(D = 30\)</span> days.</p></li>
+<li><p><strong>P1</strong>, detection with the same delay: detection
+hazard <span class="math inline">\(\eta = 0.5\)</span> a day plus 30
+days.</p></li>
+<li><p><strong>P2</strong>, detection with fast-track disruption: <span
+class="math inline">\(\eta = 0.5\)</span> plus <span
+class="math inline">\(D_P = 7\)</span> days.</p></li>
+<li><p><strong>P3</strong>, P2 plus an allow-list check at listing that
+stops half of the apps before they go live.</p></li>
+</ul>
+<div id="tab:mc">
+<table>
+<caption>Monte Carlo results: victims per app before removal or
+abandonment (200,000 simulated apps; hypothetical parameters).</caption>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th colspan="2" style="text-align: center;">Standard collection</th>
+<th colspan="2" style="text-align: center;">Shaming collection</th>
+<th colspan="2" style="text-align: center;">All apps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td
+style="text-align: left;"><span>2-3</span>(lr)<span>4-5</span>(lr)<span>6-7</span>
+Regime</td>
+<td style="text-align: center;">Mean</td>
+<td style="text-align: center;">Median</td>
+<td style="text-align: center;">Mean</td>
+<td style="text-align: center;">Median</td>
+<td style="text-align: center;">Mean</td>
+<td style="text-align: center;">Total vs. R</td>
+</tr>
+<tr>
+<td style="text-align: left;">R complaint-driven</td>
+<td style="text-align: center;">305</td>
+<td style="text-align: center;">223</td>
+<td style="text-align: center;">525</td>
+<td style="text-align: center;">475</td>
+<td style="text-align: center;">416</td>
+<td style="text-align: center;">100%</td>
+</tr>
+<tr>
+<td style="text-align: left;">P1 detection, same delay</td>
+<td style="text-align: center;">242</td>
+<td style="text-align: center;">141</td>
+<td style="text-align: center;">241</td>
+<td style="text-align: center;">143</td>
+<td style="text-align: center;">241</td>
+<td style="text-align: center;">58%</td>
+</tr>
+<tr>
+<td style="text-align: left;">P2 detection + fast track</td>
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">42</td>
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">43</td>
+<td style="text-align: center;">72</td>
+<td style="text-align: center;">17%</td>
+</tr>
+<tr>
+<td style="text-align: left;">P3 P2 + listing check</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">9%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a href="#tab:mc" data-reference-type="ref+Label"
+data-reference="tab:mc">1</a> and <a href="#fig:mc"
+data-reference-type="ref+label" data-reference="fig:mc">8</a>(a) report
+the results. Three findings stand out. First, the size-independence of
+<a href="#prop:allowance" data-reference-type="ref+label"
+data-reference="prop:allowance">1</a> holds in simulation: among
+standard-collection apps, the mean number of victims before the
+complaint trigger lies between 99.6 and 100.1 in every size quintile,
+against a theoretical <span class="math inline">\(K/\theta =
+100\)</span>. Second, under complaint-driven enforcement, apps that
+collect by shaming produce 72 per cent more victims than apps that do
+not, and only 46 per cent of them are acted on before their operators
+abandon them, against 72 per cent of standard apps. Detection removes
+this gap entirely. Third, most of the gain comes from combining
+detection with faster disruption: detection alone cuts total harm by 42
+per cent, while detection plus fast-track disruption cuts it by 83 per
+cent. The delay between evidence and action matters as much as detection
+itself.</p>
+<figure id="fig:mc" data-latex-placement="htbp">
+<img src="figs/fig8_montecarlo.png" />
+<figcaption>Monte Carlo illustrations. (a) Victims per app before
+removal under four regimes (bars: means; dots and whiskers: medians and
+inter-quartile ranges). (b) Victims before all of an operator’s apps are
+removed, for an operator with 60 new victims a day split across <span
+class="math inline">\(M\)</span> apps; lines show the closed forms of <a
+href="#prop:fragment" data-reference-type="ref+label"
+data-reference="prop:fragment">2</a>, dots show simulation means.
+Parameters are hypothetical.</figcaption>
+</figure>
+<p><a href="#fig:mc" data-reference-type="ref+Label"
+data-reference="fig:mc">8</a>(b) confirms <a href="#prop:fragment"
+data-reference-type="ref+label" data-reference="prop:fragment">2</a>.
+For an operator with 60 new victims a day and shaming collection,
+splitting across 20 apps raises the expected number of victims before
+full removal from about 2,300 to about 11,800 under complaint-driven
+enforcement. Under detection with fast-track disruption, the figure
+stays at about 540, whatever the number of apps.</p>
+<h2 id="validating-a-detection-pipeline">Validating a detection
+pipeline</h2>
+<p>A detection-driven regime needs a working detector. We built an
+open-source pipeline, <code>lendwatch-th</code>, that collects public
+app-store and web listings, matches them to an allow-list of licensed
+lenders, extracts red flags (annualised prices parsed from Thai and
+English text, short tenors, sensitive app permissions, harassment terms
+in reviews, developer metadata), links artefacts to operators through
+shared identifiers, ranks them for human review, and estimates the
+number of operators that no source observes using multiple systems
+estimation (log-linear capture–recapture models averaged by BIC; <span
+class="citation" data-cites="Chao1987 Buckland1997"></span>). The
+approach to hidden-population estimation follows its use for other
+hidden harms <span class="citation"
+data-cites="Bales2015 Silverman2020"></span>.</p>
+<p>We validated the pipeline on 30 synthetic markets, each containing
+300 illegal operators of types T1, T2 and T5, 60 licensed lenders and
+100 legitimate look-alikes (cooperatives, pay-later firms missing from
+the registry, loan calculators). Each illegal operator is visible to up
+to five lists—Google Play, the Apple App Store, the web, advertising and
+complaints—with list-specific and operator-specific catchability.
+Results are in <a href="#tab:validation" data-reference-type="ref+label"
+data-reference="tab:validation">[tab:validation]</a> and <a
+href="#fig:validation" data-reference-type="ref+label"
+data-reference="fig:validation">9</a>.</p>
+<div class="tabularx">
+<p><span>Lccc</span> Quantity &amp; Mean &amp; Range &amp; Note<br />
+Operators flagged by the pipeline &amp; 245.8 &amp; 230–261 &amp;
+Undercount of 18%<br />
+Log-linear estimate, pipeline linkage &amp; 288.6 &amp; 267–321 &amp;
+Mean error <span class="math inline">\(-3.8\%\)</span>; 95% CI covers
+truth in 24 of 30<br />
+Log-linear estimate, perfect linkage &amp; 288.8 &amp; 272–312 &amp;
+Mean error <span class="math inline">\(-3.7\%\)</span>; covers truth in
+21 of 30<br />
+Chao lower bound &amp; 315.0 &amp; 287–340 &amp; Mean error <span
+class="math inline">\(+5.0\%\)</span><br />
+High-risk tier: precision &amp; 0.997 &amp; 0.994–1.000 &amp; Share of
+flags that are illegal<br />
+High-risk tier: recall &amp; 0.878 &amp; 0.846–0.930 &amp; Share of
+illegal artefacts flagged<br />
+</p>
+</div>
+<figure id="fig:validation" data-latex-placement="htbp">
+<img src="figs/fig9_validation.png" />
+<figcaption>Validation on 30 synthetic markets. (a) Estimated number of
+illegal operators with 95% confidence intervals, against the number
+flagged and the truth. (b) Error relative to truth of four estimators:
+the observed count; Chao’s estimator; and the log-linear (LL) model with
+the pipeline’s own linkage and with perfect linkage.</figcaption>
+</figure>
+<p>Simply counting what is detected understates the population by 18 per
+cent. The model-averaged log-linear estimator reduces the error to about
+4 per cent on average, but it is biased downwards and its nominal 95 per
+cent intervals cover the truth in only 80 per cent of markets. The
+estimate with perfect linkage is no better, which locates the bias in
+the estimator—uneven catchability that pairwise interactions cannot
+fully absorb—rather than in the linkage. Chao’s estimator errs upwards
+in this design, and the truth lies between the two estimates in 23 of 30
+markets. In practice the two should be reported together as a bracket.
+Synthetic validation shows that the pipeline works as designed; it says
+nothing about accuracy on real data, where operators adapt and text is
+messier.</p>
+<h1 id="sec:roadmap">A roadmap for Thailand</h1>
+<p>The comparison and the models point to the same conclusion. Thailand
+should keep what works—a central bank with deep supervisory data—and
+close five gaps in an order dictated by the legal instrument each needs
+(<a href="#fig:roadmap,tab:roadmap" data-reference-type="ref+label"
+data-reference="fig:roadmap,tab:roadmap">[fig:roadmap,tab:roadmap]</a>).</p>
+<figure id="fig:roadmap" data-latex-placement="htbp">
+<img src="figs/fig10_roadmap.png" />
+<figcaption>A three-phase roadmap. Each phase rests on a stronger legal
+instrument than the last; gates mark the conditions for moving on.
+Expanding legal small-dollar credit runs alongside all three
+phases.</figcaption>
+</figure>
+<div class="tabularx">
+<p><span>P<span>3.3cm</span>LP<span>1.2cm</span>P<span>2.0cm</span>P<span>2.3cm</span></span>
+Measure &amp; What it requires &amp; Gap &amp; Model lever &amp;
+Precedent<br />
+<br />
+Digital lending channel register &amp; Licensees register every app,
+domain, messaging account and collection account; the BOT publishes a
+searchable list and an API &amp; D6 &amp; Raises entry cost; cheap
+gatekeeper checks &amp; India<br />
+All-in price on every loan &amp; A standard key fact statement with
+total cost and APR including fees &amp; D4 &amp; Information &amp;
+India; EU<br />
+Total-cost rule for small short loans &amp; Charges capped relative to
+principal, where the delegation allows &amp; D4 &amp; Lowers <span
+class="math inline">\(r\)</span> &amp; UK; Philippines; Singapore<br />
+Service-provider accountability &amp; Licensees answer for app
+developers, lead generators and collectors &amp; D2, D6 &amp; Closes T3,
+T4 &amp; India<br />
+Market-surveillance function &amp; Continuous detection of unlicensed
+channels from public data &amp; D7 &amp; Raises <span
+class="math inline">\(\delta\)</span> &amp; UK; Indonesia<br />
+<br />
+One consumer-credit rulebook &amp; Consolidate product notifications;
+same conduct rules for pico-finance &amp; D2 &amp; Closes seams &amp;
+Malaysia<br />
+System-wide affordability limit &amp; Cap total small unsecured
+borrowing via the credit bureau; all licensees report &amp; D5 &amp;
+Limits stacking &amp; Japan; Singapore<br />
+Standing task force &amp; Cabinet-mandated body with data-sharing and
+published actions &amp; D7 &amp; Raises <span
+class="math inline">\(\delta\)</span>, shortens <span
+class="math inline">\(D\)</span> &amp; Indonesia<br />
+Platform checks &amp; App stores and ad platforms check lending apps
+against the register &amp; D6 &amp; Raises entry cost &amp; Kenya;
+UK<br />
+<br />
+Activity-based perimeter &amp; Authorisation for anyone lending to
+consumers as a business, including hire purchase, pico-finance and
+buy-now-pay-later &amp; D1, D2 &amp; Closes arbitrage &amp; UK;
+Australia; EU<br />
+Sanctions and investigative powers &amp; Administrative fines,
+directions, powers over unlicensed activity &amp; D1, D7 &amp; Raises
+<span class="math inline">\(\delta\)</span> &amp; UK; Australia<br />
+Unenforceable unlicensed loans &amp; Borrowers owe nothing to unlicensed
+lenders and may recover payments, subject to court discretion &amp; D7
+&amp; Lowers <span class="math inline">\(r\)</span> sharply &amp; UK;
+Japan<br />
+Statutory supervisor &amp; Parliament chooses the BOT with a conduct
+mandate or a separate authority &amp; D3 &amp; – &amp; UK; Australia;
+Malaysia<br />
+</p>
+</div>
+<h4 id="why-this-order.">Why this order.</h4>
+<p>Phase 1 needs no new law, and every later measure depends on it: a
+register of licensed channels is what platforms check in Phase 2 and
+what defines “unlicensed” in Phase 3. Model 3 supplies a second reason
+for the order: enforcement against unlicensed lenders should be built
+before price rules are tightened further, because the cost of a low cap
+depends on where rationed borrowers go.</p>
+<h4 id="running-alongside-legal-supply.">Running alongside: legal
+supply.</h4>
+<p>Suppression without substitution can push borrowers to worse, offline
+lenders. Each phase should be paired with measures that expand legal
+small-dollar credit: wider pico-finance reach in under-served provinces,
+risk-based pricing within ceilings, inclusion targets for the newly
+licensed virtual banks, and debt advice.</p>
+<h4 id="safeguards.">Safeguards.</h4>
+<p>Proactive detection must be paired with human review, notice and a
+right of reply before any public listing; with blocking only through
+statutory routes under judicial oversight; with published error rates;
+and with a firm rule that monitoring targets lenders’ public conduct,
+not borrowers’ private lives <span class="citation"
+data-cites="AyresBraithwaite1992 BaldwinBlack2008"></span>.</p>
+<h4 id="performance-indicators.">Performance indicators.</h4>
+<p>Progress can be tracked with a small set of indicators: days from
+first listing to first flag; days from flag to disruption; the share of
+lending apps on Thai storefronts that match the register; the
+replacement ratio (new apps by the same operator within 90 days of a
+takedown); the share of actions taken before the first complaint; the
+false-positive rate; and the estimated hidden population of
+operators.</p>
+<h1 id="sec:agenda">Research agenda and limitations</h1>
+<h2 id="testable-hypotheses">Testable hypotheses</h2>
+<p>The comparison yields hypotheses that reforms elsewhere allow us to
+test (<a href="#tab:hypotheses" data-reference-type="ref+label"
+data-reference="tab:hypotheses">[tab:hypotheses]</a>).</p>
+<div class="tabularx">
+<p><span>P<span>2.4cm</span>LP<span>3.2cm</span>P<span>2.9cm</span></span>
+Hypothesis &amp; Statement &amp; Natural experiment &amp; Design<br />
+H1 Total-cost caps &amp; Reduce harm from short-term credit with little
+displacement to illegal lenders &amp; UK 2015; Philippines 2021;
+Indonesia 2024–26 &amp; Event study; difference-in-differences across
+products<br />
+H2 Channel registers &amp; Reduce illegal app prevalence and installs
+&amp; India’s directory; Kenya’s store check &amp; Staggered
+difference-in-differences<br />
+H3 Affordability limits &amp; Reduce multi-lender stacking and arrears,
+at some cost to access &amp; Japan 2010 &amp; Cohort comparison around
+the threshold<br />
+H4 Unenforceability &amp; Reduces illegal supply more than tougher
+penalties &amp; UK versus penalty-only regimes &amp; Comparative case
+study<br />
+H5 Reporting trap &amp; Complaints per victim are lowest under shaming
+collection &amp; Survey with list experiments &amp; Prevalence and
+reporting by harm type<br />
+</p>
+</div>
+<p>Staggered adoption across countries (H2) calls for estimators that
+remain valid when treatment effects differ across cohorts <span
+class="citation"
+data-cites="CallawaySantAnna2021 SunAbraham2021"></span>, and the
+reporting hypothesis (H5) requires survey methods that reduce
+under-reporting of sensitive behaviour, such as list experiments <span
+class="citation" data-cites="BlairImai2012"></span>.</p>
+<p>For Thailand specifically, three studies would be immediately
+informative: measuring the cost of very short loans in the licensed and
+unlicensed markets, to size the gap left by annual-rate ceilings; using
+credit-bureau data to estimate how many borrowers would reach a
+system-wide affordability limit at different thresholds; and piloting
+the channel register to measure its use by consumers and platforms.
+Single-country events, such as the 2023 informal-debt campaign, can be
+evaluated with synthetic control methods <span class="citation"
+data-cites="Abadie2010 Arkhangelsky2021"></span>.</p>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li><p><strong>Law on paper.</strong> The coding captures rules, not
+their enforcement. Testing H4 and the architecture question requires
+enforcement data that many regimes do not publish.</p></li>
+<li><p><strong>Provisional coding.</strong> Codings rely on secondary
+knowledge and have not yet been validated by local experts; several
+regimes were mid-reform at the time of writing.</p></li>
+<li><p><strong>Stylised models.</strong> The models abstract from
+heterogeneity among borrowers and operators, strategic reporting and the
+internal workings of agencies. Their parameters are illustrative, and
+the quantitative results describe mechanisms, not magnitudes.</p></li>
+<li><p><strong>Synthetic validation.</strong> The pipeline was validated
+only on synthetic markets; its live collectors have not been run against
+real app stores.</p></li>
+<li><p><strong>Transferability.</strong> Effects observed in the United
+Kingdom or Japan may differ in a market with Thailand’s informal sector
+and household debt.</p></li>
+</ul>
+<h1 id="sec:conclusion">Conclusion</h1>
+<p>Thailand regulates non-bank lenders with ambition but with weak
+instruments. Its rate ceilings are low and its conduct rules detailed,
+yet they rest on delegated notifications, follow products rather than
+activities, cap annual rates rather than the total cost of short loans,
+and leave unlicensed lending to the criminal law alone. Peers that faced
+the same digital-lending wave added a middle layer between licence and
+prison: registers of licensed channels, platform checks, standing task
+forces and unenforceability.</p>
+<p>The theory explains why that layer matters. Complaint-driven
+enforcement grants every illegal app a free-harm allowance that does not
+shrink with the app’s size, grows where collection is most abusive and
+rewards cloning. Faster takedown deters entry more than proportionally.
+And because unlicensed lenders absorb borrowers rationed out by price
+caps, caps and enforcement are complements. The roadmap that follows is
+incremental: a register of licensed channels and fee rules for short
+loans now, under existing powers; a single rulebook, a system-wide
+affordability limit and a standing task force next; and a Consumer
+Credit Act with an activity-based perimeter and unenforceable unlicensed
+loans last—with more legal small-dollar credit throughout.</p>
+<h1 class="unnumbered" id="declarations">Declarations</h1>
+<h4 id="code-and-data-availability.">Code and data availability.</h4>
+<p>The simulation code, the figure scripts and the
+<code>lendwatch-th</code> pipeline, including its synthetic-market
+generator and test suite, are available from the author. No real
+personal data were used.</p>
+<h4 id="preparation.">Preparation.</h4>
+<p>Drafting, simulations and figures were prepared with the assistance
+of an AI system (Claude, Anthropic). The author takes responsibility for
+the content. Institutional facts and references were compiled without
+access to primary databases and must be verified against original
+sources before citation.</p>
+<h4 id="competing-interests.">Competing interests.</h4>
+<p>The author declares no competing interests.</p>
+<div class="thebibliography">
+<p><span>99</span></p>
+<p>Abadie, A., Diamond, A., and Hainmueller, J. (2010). Synthetic
+control methods for comparative case studies. <em>Journal of the
+American Statistical Association</em>, 105(490), 493–505.</p>
+<p>Arkhangelsky, D., Athey, S., Hirshberg, D. A., Imbens, G. W., and
+Wager, S. (2021). Synthetic difference-in-differences. <em>American
+Economic Review</em>, 111(12), 4088–4118.</p>
+<p>Ayres, I., and Braithwaite, J. (1992). <em>Responsive Regulation:
+Transcending the Deregulation Debate</em>. Oxford University Press.</p>
+<p>Baldwin, R., and Black, J. (2008). Really responsive regulation.
+<em>Modern Law Review</em>, 71(1), 59–94.</p>
+<p>Bales, K., Hesketh, O., and Silverman, B. (2015). Modern slavery in
+the UK: how many victims? <em>Significance</em>, 12(3), 16–21.</p>
+<p>Bar-Gill, O., and Warren, E. (2008). Making credit safer.
+<em>University of Pennsylvania Law Review</em>, 157(1), 1–101.</p>
+<p>Blair, G., and Imai, K. (2012). Statistical analysis of list
+experiments. <em>Political Analysis</em>, 20(1), 47–77.</p>
+<p>Broeders, D., and Prenio, J. (2018). Innovative technology in
+financial supervision (suptech): the experience of early users. FSI
+Insights No. 9, Bank for International Settlements.</p>
+<p>Buckland, S. T., Burnham, K. P., and Augustin, N. H. (1997). Model
+selection: an integral part of inference. <em>Biometrics</em>, 53(2),
+603–618.</p>
+<p>Callaway, B., and Sant’Anna, P. H. C. (2021).
+Difference-in-differences with multiple time periods. <em>Journal of
+Econometrics</em>, 225(2), 200–230.</p>
+<p>Campbell, J. Y., Jackson, H. E., Madrian, B. C., and Tufano, P.
+(2011). Consumer financial protection. <em>Journal of Economic
+Perspectives</em>, 25(1), 91–114.</p>
+<p>Chao, A. (1987). Estimating the population size for capture-recapture
+data with unequal catchability. <em>Biometrics</em>, 43(4), 783–791.</p>
+<p>di Castri, S., Hohl, S., Kulenkampff, A., and Prenio, J. (2019). The
+suptech generations. FSI Insights No. 19, Bank for International
+Settlements.</p>
+<p>Ferrari, A., Masetti, O., and Ren, J. (2018). Interest rate caps: the
+theory and the practice. Policy Research Working Paper 8398, World
+Bank.</p>
+<p>Kolstad, C. D., Ulen, T. S., and Johnson, G. V. (1990). Ex post
+liability for harm vs. ex ante safety regulation: substitutes or
+complements? <em>American Economic Review</em>, 80(4), 888–901.</p>
+<p>Kraakman, R. H. (1986). Gatekeepers: the anatomy of a third-party
+enforcement strategy. <em>Journal of Law, Economics, and
+Organization</em>, 2(1), 53–104.</p>
+<p>Llewellyn, D. T. (2006). Institutional structure of financial
+regulation and supervision: the basic issues. Paper presented at the
+World Bank seminar on aligning supervisory structures with country
+needs, Washington, DC.</p>
+<p>Maimbo, S. M., and Henriquez Gallegos, C. A. (2014). Interest rate
+caps around the world: still popular, but a blunt instrument. Policy
+Research Working Paper 7070, World Bank.</p>
+<p>Melzer, B. T. (2011). The real costs of credit access: evidence from
+the payday lending market. <em>Quarterly Journal of Economics</em>,
+126(1), 517–555.</p>
+<p>Morse, A. (2011). Payday lenders: heroes or villains? <em>Journal of
+Financial Economics</em>, 102(1), 28–44.</p>
+<p>Munyendo, C. W., Acar, Y., and Aviv, A. J. (2022). “Desperate times
+call for desperate measures”: user concerns with mobile loan apps in
+Kenya. In <em>Proceedings of the IEEE Symposium on Security and
+Privacy</em>.</p>
+<p>Polinsky, A. M., and Shavell, S. (2000). The economic theory of
+public enforcement of law. <em>Journal of Economic Literature</em>,
+38(1), 45–76.</p>
+<p>Ramesh, D., Kameswaran, V., Wang, D., and Sambasivan, N. (2022). How
+platform-user power relations shape algorithmic accountability: a case
+study of instant loan platforms and financially stressed users in India.
+In <em>Proceedings of the ACM Conference on Fairness, Accountability,
+and Transparency</em>.</p>
+<p>Reserve Bank of India (2021). <em>Report of the Working Group on
+Digital Lending including Lending through Online Platforms and Mobile
+Apps</em>. Mumbai.</p>
+<p>Restoy, F. (2021). Fintech regulation: how to achieve a level playing
+field. FSI Occasional Paper No. 17, Bank for International
+Settlements.</p>
+<p>Safavian, M., and Zia, B. (2018). The impact of interest rate caps on
+the financial sector: evidence from commercial banks in Kenya. Policy
+Research Working Paper 8393, World Bank.</p>
+<p>Shavell, S. (1984). Liability for harm versus regulation of safety.
+<em>Journal of Legal Studies</em>, 13(2), 357–374.</p>
+<p>Siems, M. M. (2005). Numerical comparative law: do we need
+statistical evidence in law in order to reduce complexity? <em>Cardozo
+Journal of International and Comparative Law</em>, 13, 521–540.</p>
+<p>Silverman, B. W. (2020). Multiple-systems analysis for the
+quantification of modern slavery: classical and Bayesian approaches.
+<em>Journal of the Royal Statistical Society: Series A</em>, 183(3),
+691–736.</p>
+<p>Skiba, P. M., and Tobacman, J. (2019). Do payday loans cause
+bankruptcy? <em>Journal of Law and Economics</em>, 62(3), 485–519.</p>
+<p>Sun, L., and Abraham, S. (2021). Estimating dynamic treatment effects
+in event studies with heterogeneous treatment effects. <em>Journal of
+Econometrics</em>, 225(2), 175–199.</p>
+<p>Taylor, M. (1995). <em>Twin Peaks: A Regulatory Structure for the New
+Century</em>. Centre for the Study of Financial Innovation, London.</p>
+<p>Zinman, J. (2010). Restricting consumer credit access: household
+survey evidence on effects around the Oregon rate cap. <em>Journal of
+Banking and Finance</em>, 34(3), 546–556.</p>
+<p>Zweigert, K., and K<span>ö</span>tz, H. (1998). <em>An Introduction
+to Comparative Law</em> (3rd ed.). Oxford University Press.</p>
+</div>
+<h1 id="app:proofs">Proofs</h1>
+<h4 id="proof-of-propallowance.">Proof of <a href="#prop:allowance"
+data-reference-type="ref+label"
+data-reference="prop:allowance">1</a>.</h4>
+<p>Index victims in order of arrival. Because each victim reports
+independently with probability <span
+class="math inline">\(\theta\)</span>, the index <span
+class="math inline">\(V_K\)</span> of the victim who files the <span
+class="math inline">\(K\)</span>-th complaint follows a negative
+binomial distribution (number of Bernoulli trials to the <span
+class="math inline">\(K\)</span>-th success), with <span
+class="math inline">\(\mathbb{E}[V_K] = K/\theta\)</span> and <span
+class="math inline">\(\operatorname{Var}[V_K] =
+K(1-\theta)/\theta^2\)</span>. This holds whatever the arrival process,
+because it depends only on the sequence of reporting decisions. During
+the processing delay <span class="math inline">\(D\)</span>, victims
+continue to arrive at rate <span class="math inline">\(u\)</span>,
+adding <span class="math inline">\(uD\)</span> in expectation. Summing
+gives <a href="#eq:allowance" data-reference-type="eqref"
+data-reference="eq:allowance">[eq:allowance]</a>. <span
+class="math inline">\(\square\)</span></p>
+<h4 id="proof-of-propfragment.">Proof of <a href="#prop:fragment"
+data-reference-type="ref+label"
+data-reference="prop:fragment">2</a>.</h4>
+<p>Each of the <span class="math inline">\(M\)</span> apps receives
+victims at rate <span class="math inline">\(U/M\)</span>. By <a
+href="#prop:allowance" data-reference-type="ref+label"
+data-reference="prop:allowance">1</a>, each app accumulates <span
+class="math inline">\(K/\theta + (U/M)D\)</span> victims in expectation
+before removal under complaint-driven enforcement; summing over apps
+gives <span class="math inline">\(MK/\theta + UD\)</span>. Under
+detection, each app is detected after an exponential time with mean
+<span class="math inline">\(1/\eta\)</span>, independent of its size,
+and removed <span class="math inline">\(D_P\)</span> later, so it
+accumulates <span class="math inline">\((U/M)(1/\eta + D_P)\)</span>
+victims; summing gives <span class="math inline">\(U(1/\eta +
+D_P)\)</span>. Operator profit is <span class="math inline">\(m\)</span>
+times expected victims less <span class="math inline">\(cM\)</span>.
+Under complaint-driven enforcement the marginal profit of an extra app
+is <span class="math inline">\(mK/\theta - c\)</span>; under detection
+it is <span class="math inline">\(-c&lt;0\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<h4 id="proof-of-propdominance.">Proof of <a href="#prop:dominance"
+data-reference-type="ref+label"
+data-reference="prop:dominance">3</a>.</h4>
+<p>Under detection, <span class="math inline">\(\mathbb{E}[V^P] =
+u(1/\eta + D_P)\)</span>. Comparing with <a href="#eq:allowance"
+data-reference-type="eqref"
+data-reference="eq:allowance">[eq:allowance]</a> and dividing by <span
+class="math inline">\(u&gt;0\)</span> gives <a href="#eq:dominance"
+data-reference-type="eqref"
+data-reference="eq:dominance">[eq:dominance]</a>. With <span
+class="math inline">\(D_P = D\)</span> the condition reduces to <span
+class="math inline">\(1/\eta &lt; K/(\theta u)\)</span>, that is <span
+class="math inline">\(u &lt; K\eta/\theta\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<h4 id="proof-of-propentry.">Proof of <a href="#prop:entry"
+data-reference-type="ref+label" data-reference="prop:entry">4</a>.</h4>
+<p>Take logarithms of <a href="#eq:stock" data-reference-type="eqref"
+data-reference="eq:stock">[eq:stock]</a>: <span
+class="math inline">\(\ln N^* = \ln\lambda + \ln F(V) -
+\ln\delta\)</span> with <span class="math inline">\(V =
+r/(\rho+\delta)\)</span>. Then <span class="math inline">\(\partial\ln
+V/\partial\ln\delta = -\delta/(\rho+\delta)\)</span> and <span
+class="math inline">\(\partial\ln V/\partial\ln r = 1\)</span>. Since
+<span class="math inline">\(\partial\ln F(V)/\partial\ln V =
+\kappa\)</span>, the chain rule gives <span
+class="math inline">\(\varepsilon_{N,\delta} =
+-\kappa\,\delta/(\rho+\delta) - 1\)</span> and <span
+class="math inline">\(\varepsilon_{N,r} = \kappa\)</span>. Because <span
+class="math inline">\(\kappa \geq 0\)</span> and <span
+class="math inline">\(\delta/(\rho+\delta) &gt; 0\)</span>, <span
+class="math inline">\(\varepsilon_{N,\delta} &lt; -1\)</span> whenever
+<span class="math inline">\(\kappa &gt; 0\)</span>. <a
+href="#cor:reactive" data-reference-type="ref+Label"
+data-reference="cor:reactive">1</a> follows because the expected time to
+removal under complaint-driven enforcement is <span
+class="math inline">\(K/(\theta u) + D\)</span>, whose inverse increases
+with <span class="math inline">\(\theta\)</span>, and <span
+class="math inline">\(N^*\)</span> decreases in <span
+class="math inline">\(\delta\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<h4 id="proof-of-propcap.">Proof of <a href="#prop:cap"
+data-reference-type="ref+label" data-reference="prop:cap">5</a>.</h4>
+<p>Differentiate <a href="#eq:welfare" data-reference-type="eqref"
+data-reference="eq:welfare">[eq:welfare]</a> with respect to <span
+class="math inline">\(\bar{r}\)</span> using Leibniz’s rule. At the
+upper limit <span class="math inline">\(p = \hat p\)</span> the
+integrand equals <span class="math inline">\(b\)</span>, because <span
+class="math inline">\(r(\hat p) = \bar{r}\)</span>. Hence <span
+class="math display">\[\bar p\,\frac{\partial W}{\partial\bar{r}} =
+\big(b + s(\delta)h\big)\,\hat p&#39;(\bar{r}) - \omega\,\hat
+p(\bar{r}),
+\qquad \hat p&#39;(\bar{r}) = \frac{1+\rho_0}{(1+\bar{r})^2}.\]</span>
+Setting this to zero and substituting <span class="math inline">\(\hat
+p(\bar{r}) = (\bar{r}-\rho_0)/(1+\bar{r})\)</span> gives <span
+class="math inline">\((\bar{r}-\rho_0)(1+\bar{r}) = A\)</span>, a
+quadratic whose positive root is <a href="#eq:cap"
+data-reference-type="eqref" data-reference="eq:cap">[eq:cap]</a>. The
+second derivative, <span class="math inline">\(\bar p^{-1}[(b+sh)\hat
+p&#39;&#39;(\bar{r}) - \omega\hat p&#39;(\bar{r})]\)</span>, is negative
+because <span class="math inline">\(\hat p&#39;&#39; &lt; 0\)</span> and
+<span class="math inline">\(\hat p&#39; &gt; 0\)</span>, so the root is
+a maximum. The left side of the first-order condition increases in <span
+class="math inline">\(\bar{r}\)</span> for <span
+class="math inline">\(\bar{r}&gt; \rho_0\)</span>, so <span
+class="math inline">\(\bar{r}^*\)</span> increases in <span
+class="math inline">\(A\)</span>; <span class="math inline">\(A\)</span>
+increases in <span class="math inline">\(h\)</span> and, since <span
+class="math inline">\(s&#39;(\delta) &lt; 0\)</span>, decreases in <span
+class="math inline">\(\delta\)</span>. Finally <span
+class="math inline">\(\partial^2 W/\partial\bar{r}\,\partial\delta =
+h\,s&#39;(\delta)\,\hat p&#39;(\bar{r})/\bar p &lt; 0\)</span>. The
+solution is interior when <span class="math inline">\(\hat p(\bar{r}^*)
+&lt; \bar p\)</span>, which holds for all parameter values used in <a
+href="#fig:model3" data-reference-type="ref+label"
+data-reference="fig:model3">7</a> with <span class="math inline">\(\bar
+p = 0.5\)</span>. <span class="math inline">\(\square\)</span></p>
+<h1 id="app:codebook">Codebook</h1>
+<div class="tabularx">
+<p><span>P<span>2.5cm</span>LLL</span> Dimension &amp; 0 &amp; 1 &amp;
+2<br />
+D1 Legal basis &amp; Secondary or delegated legislation &amp; Provisions
+in a general financial statute &amp; Dedicated consumer-credit or
+moneylending statute (or directive)<br />
+D2 Perimeter &amp; Product-based, split across authorities &amp;
+Entity-based licensing &amp; Activity-based: anyone lending to consumers
+as a business<br />
+D3 Lead supervisor &amp; Several authorities, no single lead &amp;
+Single lead with a primarily prudential or general mandate &amp;
+Dedicated conduct regulator<br />
+D4 Price &amp; No cap; disclosure only &amp; Annual-rate cap &amp;
+Total-cost or per-period cap for small loans<br />
+D5 Affordability &amp; Lender-level assessment only &amp; Partial
+cross-lender limits (household or platform counts) &amp; System-wide
+limit enforced through a credit bureau<br />
+D6 Digital channels &amp; Nothing specific &amp; Rules, registration,
+advertising limits or negative lists &amp; Public register of licensed
+channels, or platform licence checks<br />
+D7 Unlicensed lending &amp; Criminal law only &amp; Civil or
+administrative consequences, takedowns, civil penalties &amp; Standing
+task force, or unenforceability with proactive investigation<br />
+</p>
+</div>
+<p>Where a regime is mid-reform, the code reflects the regime in force
+at the time of writing; reforms are noted in <a href="#tab:matrix"
+data-reference-type="ref+label"
+data-reference="tab:matrix">[tab:matrix]</a>. Codes for the United
+States and the European Union describe the federal or supranational
+layer together with typical member arrangements and are the least
+precise in the sample.</p>
+<h1 id="app:sim">Simulation and pipeline details</h1>
+<h4 id="monte-carlo-secquant.">Monte Carlo (<a href="#sec:quant"
+data-reference-type="ref+label" data-reference="sec:quant">8</a>).</h4>
+<p>For each of 200,000 apps we draw <span class="math inline">\(u \sim
+\text{LogNormal}(\ln 5, 1)\)</span>, a collection type (shaming with
+probability 0.5), and an abandonment time <span class="math inline">\(E
+\sim \text{Exp}(1/180)\)</span>. Under regime R, the time of the <span
+class="math inline">\(K\)</span>-th complaint is <span
+class="math inline">\(\text{Gamma}(K, \theta u)\)</span> and action
+occurs <span class="math inline">\(D = 30\)</span> days later; under
+P1–P3 detection time is <span class="math inline">\(\text{Exp}(\eta =
+0.5)\)</span>, with delays of 30 (P1) or 7 days (P2, P3); under P3 an
+independent half of apps is stopped at listing. Victims are drawn as
+<span class="math inline">\(\text{Poisson}(u \cdot
+\min(T_{\text{action}}, E))\)</span>. The fragmentation experiment uses
+4,000 replications per value of <span class="math inline">\(M\)</span>
+with no abandonment. Random seed: 20261110.</p>
+<h4 id="synthetic-markets-tabvalidation.">Synthetic markets (<a
+href="#tab:validation" data-reference-type="ref+label"
+data-reference="tab:validation">[tab:validation]</a>).</h4>
+<p>Each market contains 300 illegal operators (60% T1, 25% T2, 15% T5),
+60 licensed lenders with registered channels, 30 savings cooperatives,
+30 pay-later providers absent from the registry, and 40 loan
+calculators. Each illegal operator draws a latent catchability <span
+class="math inline">\(z \sim N(0,1)\)</span> that shifts the log-odds of
+appearing on each of five lists by <span
+class="math inline">\(0.5z\)</span>; base probabilities differ by type
+and list. A quarter of T1 operators are “stealthy”: clean listing text,
+corporate e-mail domains and fewer harm signals. Linkage uses developer
+accounts and e-mail, privacy-policy URLs, own domains, messaging IDs,
+salted hashes of phone and account numbers, and explicit references in
+complaints and ads. Operators enter the population estimate if any
+member artefact scores in the high-risk tier or appears in a complaint.
+Log-linear models include all subsets of pairwise list interactions and
+are averaged with BIC weights; confidence intervals use unconditional
+standard errors on the log scale.</p>
+</body>
+</html>

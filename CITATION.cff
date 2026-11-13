@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "Please cite the paper (preferred-citation); if you use lendwatch-th, also cite the software."
+title: "non-bank-lending-research: paper, simulations and the lendwatch-th detection pipeline"
+type: software
+authors:
+  - family-names: Chongmankhong
+    given-names: Thanatchon
+version: 0.1.0
+date-released: 2026-11-13
+repository-code: "https://github.com/thanatchon36/non-bank-lending-research"
+url: "https://thanatchon36.github.io/non-bank-lending-research/paper/"
+keywords: [non-bank-lending, digital-lending, regulation, thailand, enforcement, suptech]
+preferred-citation:
+  type: generic
+  title: "Regulating Non-Bank Lenders in the Digital Age: A Comparative Study of Twelve Regimes, a Theory of Complaint-Driven Enforcement, and a Roadmap for Thailand"
+  authors:
+    - family-names: Chongmankhong
+      given-names: Thanatchon
+  year: 2026
+  url: "https://thanatchon36.github.io/non-bank-lending-research/paper/"
+  notes: "Working paper; quantitative results are simulated."
