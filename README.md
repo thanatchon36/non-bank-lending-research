@@ -1,4 +1,4 @@
-<p align="center"><a href="paper/paper.pdf"><img src="paper/figs/fig1_pipeline.png" alt="Two enforcement pipelines: complaint-driven versus detection-driven" width="100%"></a></p>
+<p align="center"><a href="paper/paper.pdf"><img src="docs/assets/banner.png" alt="non-bank lending: synthetic operator network" width="100%"></a></p>
 
 <p align="center">
 <a href="analysis/requirements.txt"><img src="https://img.shields.io/badge/python-3.10%2B-f5a623?style=flat-square&labelColor=0b1020" alt="Python 3.10+"></a>
@@ -22,7 +22,7 @@ complaint-driven enforcement against unlicensed lenders, and a three-phase refor
 Thailand.** The repository holds the paper, the code that produces every figure and number in
 it, and `lendwatch-th`, an open-source pipeline for detecting unlicensed digital lenders.
 
-![Regime heatmap](paper/figs/fig3_heatmap.png)
+![Two enforcement pipelines](paper/figs/fig1_pipeline.png)
 
 > **Simulated data notice.** Model results, the Monte Carlo and the pipeline validation use
 > synthetic data and hypothetical parameters. They illustrate mechanisms and are not estimates
